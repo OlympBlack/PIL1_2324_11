@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Utilisateurs',
+    'commondatab',
 
 ]
 
@@ -53,7 +54,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'PIL1_2324_11.urls'
-
+AUTH_USER_MODEL = 'commondatab.ZzUsers'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
