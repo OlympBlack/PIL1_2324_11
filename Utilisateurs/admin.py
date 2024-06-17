@@ -1,3 +1,4 @@
 from django.contrib import admin
+from commondatab.models import ZzUsers
 
-# Register your models here.
+admin.site.register(ZzUsers)
