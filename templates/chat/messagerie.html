@@ -1,18 +1,19 @@
+{%  load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="./icon/bootstrap-icons.css">
-    <link rel="stylesheet" href="style-2.css">
-    <link rel="stylesheet" href="responsive.css">
+    <link rel="stylesheet" href="{% static 'icon/bootstrap-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style-2.css' %}">
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
 </head>
 <body>
     <nav class="sidebar">
         <div class="aside-header">
             <div class="brand">
-                <img src="images/logo.png" width="100%" height="100%">
+                <img src="{% static 'image/profile.jpg' %}" width="100%" height="100%">
                 <h3>SoulQuest</h3>
             </div>
 
@@ -32,7 +33,7 @@
                         <div class="updates-container">
                             <div class="update">
                                 <div class="profile-image">
-                                    <img src="images/profile.JPG" alt="" width="100%">
+                                    <img src="{% static 'image/profile.jpg' %}" alt="" width="100%">
                                 </div>
         
                                 <div class="message">
@@ -44,7 +45,7 @@
         
                             <div class="update">
                                 <div class="profile-image">
-                                    <img src="images/profile.JPG" alt="" width="100%">
+                                    <img src="{% static 'image/profile.jpg' %}" alt="" width="100%">
                                 </div>
         
                                 <div class="message">
@@ -56,19 +57,7 @@
         
                             <div class="update">
                                 <div class="profile-image">
-                                    <img src="images/profile.JPG" alt="" width="100%">
-                                </div>
-        
-                                <div class="message">
-                                    <p><strong>Arthur</strong>Lorem ipsum dolor 
-                                        sit amet consectetur.
-                                    </p>
-                                </div>
-                            </div>
-    
-                            <div class="update">
-                                <div class="profile-image">
-                                    <img src="images/profile.JPG" alt="" width="100%">
+                                    <img src="{% static 'image/profile.jpg' %}" alt="" width="100%">
                                 </div>
         
                                 <div class="message">
@@ -80,7 +69,7 @@
     
                             <div class="update">
                                 <div class="profile-image">
-                                    <img src="images/profile.JPG" alt="" width="100%">
+                                    <img src="{% static 'image/profile.jpg' %}G" alt="" width="100%">
                                 </div>
         
                                 <div class="message">
@@ -92,7 +81,7 @@
     
                             <div class="update">
                                 <div class="profile-image">
-                                    <img src="images/profile.JPG" alt="" width="100%">
+                                    <img src="{% static 'image/profile.jpg' %}" alt="" width="100%">
                                 </div>
         
                                 <div class="message">
@@ -104,7 +93,7 @@
     
                             <div class="update">
                                 <div class="profile-image">
-                                    <img src="images/profile.JPG" alt="" width="100%">
+                                    <img src="{% static 'image/profile.jpg' %}" alt="" width="100%">
                                 </div>
         
                                 <div class="message">
@@ -116,7 +105,7 @@
     
                             <div class="update">
                                 <div class="profile-image">
-                                    <img src="images/profile.JPG" alt="" width="100%">
+                                    <img src="{% static 'image/profile.jpg' %}" alt="" width="100%">
                                 </div>
         
                                 <div class="message">
@@ -128,7 +117,7 @@
     
                             <div class="update">
                                 <div class="profile-image">
-                                    <img src="images/profile.JPG" alt="" width="100%">
+                                    <img src="{% static 'image/profile.jpg' %}" alt="" width="100%">
                                 </div>
         
                                 <div class="message">
@@ -140,7 +129,7 @@
     
                             <div class="update">
                                 <div class="profile-image">
-                                    <img src="images/profile.JPG" alt="" width="100%">
+                                    <img src="{% static 'image/profile.jpg' %}" alt="" width="100%">
                                 </div>
         
                                 <div class="message">
@@ -152,7 +141,19 @@
     
                             <div class="update">
                                 <div class="profile-image">
-                                    <img src="images/profile.JPG" alt="" width="100%">
+                                    <img src="{% static 'image/profile.jpg' %}" alt="" width="100%">
+                                </div>
+        
+                                <div class="message">
+                                    <p><strong>Arthur</strong>Lorem ipsum dolor 
+                                        sit amet consectetur.
+                                    </p>
+                                </div>
+                            </div>
+    
+                            <div class="update">
+                                <div class="profile-image">
+                                    <img src="{% static 'image/profile.jpg' %}" alt="" width="100%">
                                 </div>
         
                                 <div class="message">
@@ -197,28 +198,28 @@
                     <div class="small-talk">
                         <div class="talk left">
                             <div class="talk-img">
-                                <img src="./images/profile.JPG" alt="" width="100%">
+                                <img src="{% static 'image/profile.jpg' %}" alt="" width="100%">
                             </div>
                             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus, provident?</p>
                         </div>
             
                         <div class="talk right">
                             <div class="talk-img">
-                                <img src="./images/profile.JPG" alt="" width="100%">
+                                <img src="{% static 'image/profile.jpg' %}" alt="" width="100%">
                             </div>
                             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus, provident?</p>
                         </div>
             
                         <div class="talk left">
                             <div class="talk-img">
-                                <img src="./images/profile.JPG" alt="" width="100%">
+                                <img src="{% static 'image/profile.jpg' %}" alt="" width="100%">
                             </div>
                             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus, provident?</p>
                         </div>
             
                         <div class="talk right">
                             <div class="talk-img">
-                                <img src="./images/profile.JPG" alt="" width="100%">
+                                <img src="{% static 'image/profile.jpg' %}" alt="" width="100%">
                             </div>
                             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus, provident?</p>
                         </div>
