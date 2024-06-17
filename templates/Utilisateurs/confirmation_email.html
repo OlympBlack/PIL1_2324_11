@@ -1,0 +1,15 @@
+<!-- templates/registration/confirmation_email.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Confirmation de Compte</title>
+</head>
+<body>
+    <h2>Bienvenue sur notre site !</h2>
+    <p>Merci de vous être inscrit. Veuillez cliquer sur le lien ci-dessous pour confirmer votre compte :</p>
+    <p><a href="{{ protocol }}://{{ domain }}{% url 'Utilisateurs:confirm_account' token %}">Confirmer votre compte</a></p>
+    <p>Si vous n'avez pas créé de compte, ignorez cet email.</p>
+</body>
+</html>
