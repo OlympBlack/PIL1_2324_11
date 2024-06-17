@@ -1,0 +1,216 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Réglages | Soulquest</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'css/animate.min.css' %}" rel="stylesheet">
+  <link href="{% static 'css/aos.css' %}" rel="stylesheet">
+  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'css/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'css/boxicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'css/swiper-bundle.min.css' %}" rel="stylesheet">
+  <link href="{% static 'css/style.css' %}" rel="stylesheet">
+  <link href="{% static 'css/style2.css' %}" rel="stylesheet">
+  <link href="{% static 'css/style_profil.css' %}" rel="stylesheet">
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.0.9/css/boxicons.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+  <a href="#" class="back-button bx bx-arrow-back"></a>
+  <a href="#" class="toggle-sidebar-button bx bx-menu" onclick="toggleSidebar()"></a>
+    
+  <div class="container">
+    <div class="row">
+      <div id="sidebar" class="col-md-4 mt-2 sidebar animate__animated animate__fadeInLeft animate__slow" data-aos="fade-right">
+        <div class="profile-section">
+          <img src="{% static 'image/profil.jpg' %}" alt="Profile Picture">
+          <h2 class=""><strong>OlympBlack</strong></h2>
+        </div>
+        <div class="menu">
+          <label for="email">Adresse e-mail</label>
+          <input type="text" id="email" class="form-control" value="gbassijuleschrist@gmail.com" >
+
+          <label for="pseudo">Pseudo</label>
+          <input type="text" id="pseudo" class="form-control" value="Jules-christ" >
+
+          <label for="birthday">Date de naissance</label>
+          <input type="text" id="birthday" class="form-control" value="15/08/2001" >
+
+          <label for="bio">Biographie</label>
+         <textarea name="bio" id="bio" class="form-control">
+          Je suis OlympBlack jeune béninois, j'aime bien les filles
+         </textarea>
+
+          <label for="sexe">Sexe</label>
+          <input type="text" id="sexe" class="form-control" value="Homme" ><br>
+
+          <input type="text" name="" id="" value="Paramètres de la fonction Découverte"  class=" form-control text-center" style="border: 1px solid rgb(255, 0, 191); color: rgb(255, 0, 191);">
+
+          <label for="location">Emplacement</label>
+          <input type="text" id="location" class="form-control" value="Cotonou - Bénin" >
+
+          <label for="religion">Réligion</label>
+          <input type="text" id="religion" class="form-control" value="Chétien" >
+
+    
+            <div class="filter">
+                <header class="header-right">
+        
+                    <button class="toggle-chat" id="openChat">
+                        <span class="bi-chat-fill icon"></span>
+                    </button>
+        
+                    <button class="toggle-chat-1" id="closeChat">
+                        <span class="bi-chat-fill icon"></span>
+                    </button>
+                    
+                    <button class="toggle-menu-btn" id="openFilter">
+                        <span class="bi-sliders icon"></span>
+                    </button>
+        
+                    <div class="toggle-theme">
+                        <span class="bi-lightbulb-fill active"></span>
+                        <span class="bi-lightbulb-off-fill"></span>
+                    </div>
+        
+                    <div class="profile">
+                        <div class="profile-info">
+                            <p>Salut, <strong>Afriquetec</strong></p>
+                            <small>Admin</small>
+                        </div>
+        
+                        <div class="profile-image">
+                            <img src="images/profile.jpg" alt="" width="100%">
+                        </div>
+                    </div>
+                </header>
+                <div class="fit">
+                    <div class="filter-header">
+                        <small>Filtre</small>
+                        <span class="bi-caret-up-fill"></span>
+                    </div>
+                    <div class="filter-form">
+                        <div class="scrollbox">
+                            <div class="scrollbox-inner">
+                                <form action="" class="formm">
+                                       
+                                        <div class="form-group">
+                                            <div class="tranche-head text-cyan">
+                                                Tranches d'âge
+                                            </div>
+                                            <div class="tranche-body">
+                                                <div class="tranche">
+                                                    <input type="checkbox" id="1">
+                                                    <label for="1">18 à 25 ans</label>
+                                                </div>
+                                                <div class="tranche">
+                                                    <input type="checkbox" id="2">
+                                                    <label for="2">18 à 25 ans</label>
+                                                </div>
+                                                <div class="tranche">
+                                                    <input type="checkbox" id="3">
+                                                    <label for="3">18 à 25 ans</label>
+                                                </div>
+                                                <div class="tranche">
+                                                    <input type="checkbox" id="4">
+                                                    <label for="4">18 à 25 ans</label>
+                                                </div>
+                                                <div class="tranche">
+                                                    <input type="checkbox" id="5">
+                                                    <label for="5">18 à 25 ans</label>
+                                                </div>
+                
+                                                <div class="tranche">
+                                                    <input type="checkbox" id="6">
+                                                    <label for="6">18 à 25 ans</label>
+                                                </div>
+                
+                                                <div class="tranche">
+                                                    <input type="checkbox" id="7">
+                                                    <label for="7">18 à 25 ans</label>
+                                                </div>
+                
+                                                <div class="tranche">
+                                                    <input type="checkbox" id="8">
+                                                    <label for="8">18 à 25 ans</label>
+                                                </div>
+                
+                                                <div class="tranche">
+                                                    <input type="checkbox" id="9">
+                                                    <label for="9">18 à 25 ans</label>
+                                                </div>
+                
+                                                <div class="tranche">
+                                                    <input type="checkbox" id="10">
+                                                    <label for="10">18 à 25 ans</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                                                           
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        
+            </div>
+        
+
+         <!-- <label for="distance">Plage d'âge</label>
+          <input type="range" id="distance" class="form-range" min="18" max="100" value="25">
+
+          <label class="form-check">
+            <input type="checkbox" class="form-check-input" id="only-this-range">
+            Afficher uniquement des personnes dans cette plage
+          </label>-->
+
+         
+
+          <input type="text" name="" id="" value="Action"  class="bg-white text-danger form-control text-center">
+          
+          <div class="mt-2 ml-3">
+            <a href="#"><button class="btn btn-success">Déconnecter</button></a>
+            <a href="#"><button class="btn btn-danger">Supprimer mon compte</button></a>
+          </div>
+        </div>
+
+        <a href="{% url 'Utilisateurs:index' %}"><h5 class="text-center mt-4 " style="text-decoration: underline;">SoulQuest- 2024</h5></a>
+      </div>
+      <div id="profile-card-container" class="col-md-8">
+        <div id="profile-card" class="profile-card mx-auto animate__animated animate__fadeInRight animate__slow" data-aos="fade-left">
+          <img src="{% static 'image/profil.jpg' %}" alt="Profile Picture">
+          <h2><strong>OlympBlack</strong></h2>
+
+          <button class="btn" onmouseover="pauseAnimation(this)" onmouseout="resumeAnimation(this)">Modifier vos informations</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bibliothèques JavaScript tierces -->
+  <script src="{% static 'js/aos.js' %}"></script>
+  <script src="{% static 'js/glightbox.min.js' %}"></script>
+  <script src="{% static 'js/swiper-bundle.min.js' %}"></script>
+
+  <!-- Bootstrap JavaScript -->
+  <script src="{% static 'js/bootstrap.bundle.js' %}"></script>
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.js' %}"></script>
+  <!-- Scripts personnalisés -->
+  <script src="{% static 'js/main.js' %}"></script>
+  <script src="{% static 'js/main2.js' %}"></script>
+
+
+
+</body>
+
+</html>

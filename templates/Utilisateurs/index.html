@@ -1,0 +1,408 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>SoulQuest</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'css/animate.min.css' %}" rel="stylesheet">
+  <link href="{% static 'css/aos.css' %}" rel="stylesheet">
+  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'css/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'css/boxicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'css/swiper-bundle.min.css' %}" rel="stylesheet">
+  <link href="{% static 'css/style.css' %}" rel="stylesheet">
+  <link href="{% static 'css/style2.css' %}" rel="stylesheet">
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.0.9/css/boxicons.min.css" rel="stylesheet">
+
+  
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top d-flex align-items-center header-transparent " style="background: linear-gradient(to right, rgb(129, 63, 222), rgb(205, 19, 168))">
+    <div class="container d-flex justify-content-between align-items-center">
+      <div class="logo">
+        <h1 class="text-light"><a href="index.html"><span>SoulQuest</span></a></h1>
+      </div>
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="active" href="index.html">Accueil</a></li>
+          <li><a href="about.html">À Propos</a></li>
+          <li><a href="services.html">Services</a></li>
+
+          <a href="{% url 'Utilisateurs:connexion' %}">
+            <button class="btn bg-none border-white text-white">Se connecter</button>
+          </a>
+          <a href="{% url 'Utilisateurs:inscription' %}">
+              <button class="btn bg-none border-white text-white">S'inscrire</button>
+          </a>
+        
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav>
+    </div>
+  </header>
+
+<!-- ======= Hero Section ======= -->
+<section id="hero" class="d-flex justify-content-center align-items-center">
+  <div id="heroCarousel" class="container carousel carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
+    <!-- Slide 1 -->
+    <div class="carousel-item active">
+      <div class="carousel-container">
+        <h2 class="animate__animated animate__fadeInDown">Bienvenue sur <span>SoulQuest</span></h2>
+        <p class="animate__animated animate__fadeInUp">Trouvez votre partenaire idéal. Découvrez des personnes qui partagent vos intérêts et vos valeurs. Commencez votre voyage vers une relation épanouissante dès aujourd'hui.</p>
+        <a href="{% url 'Utilisateurs:inscription' %}" class="btn-get-started animate__animated animate__fadeInUp bg-white text-dark">Commencer maintenant</a>
+      </div>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="carousel-item">
+      <div class="carousel-container">
+        <h2 class="animate__animated animate__fadeInDown">Créez des connexions authentiques</h2>
+        <p class="animate__animated animate__fadeInUp">Notre plateforme vous aide à rencontrer des personnes authentiques et sincères. Explorez et trouvez quelqu'un qui correspond à votre personnalité et à vos intérêts.</p>
+        <a href="{% url 'Utilisateurs:inscription' %}" class="btn-get-started animate__animated animate__fadeInUp bg-white text-dark">Commencer maintenant</a>
+      </div>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="carousel-item">
+      <div class="carousel-container">
+        <h2 class="animate__animated animate__fadeInDown">Partagez des moments mémorables</h2>
+        <p class="animate__animated animate__fadeInUp">Organisez des rencontres et des sorties inoubliables avec des personnes partageant les mêmes passions. Transformez chaque rencontre en une expérience unique.</p>
+        <a href="{% url 'Utilisateurs:inscription' %}" class="btn-get-started animate__animated animate__fadeInUp bg-white text-dark">Commencer maintenant</a>
+      </div>
+    </div>
+
+    <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon bx bx-chevron-left" aria-hidden="true"></span>
+    </a>
+    <a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
+      <span class="carousel-control-next-icon bx bx-chevron-right" aria-hidden="true"></span>
+    </a>
+  </div>
+</section>
+
+
+  <main id="main">
+    <!-- ======= Services Section ======= -->
+    <section class="services" style="background: linear-gradient(to right, rgb(129, 63, 222), pink)">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="fade-up">
+            <div class="icon-box icon-box-pink">
+              <div class="icon"><i class="bx bxl-dribbble"></i></div>
+              <h4 class="title"><a href="">Matchmaking Personnalisé</a></h4>
+              <p class="description">Nous utilisons des algorithmes avancés pour vous connecter avec des personnes compatibles, en fonction de vos intérêts et préférences.</p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
+            <div class="icon-box icon-box-cyan">
+              <div class="icon"><i class="bx bx-file"></i></div>
+              <h4 class="title"><a href="">Profil Vérifié</a></h4>
+              <p class="description">Chaque profil est soigneusement vérifié pour garantir des rencontres sûres et authentiques.</p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
+            <div class="icon-box icon-box-green">
+              <div class="icon"><i class="bx bx-tachometer"></i></div>
+              <h4 class="title"><a href="">Rencontres Rapides</a></h4>
+              <p class="description">Participez à des événements de rencontres rapides et faites connaissance avec plusieurs personnes en peu de temps.</p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
+            <div class="icon-box icon-box-blue">
+              <div class="icon"><i class="bx bx-world"></i></div>
+              <h4 class="title"><a href="">Événements Sociaux</a></h4>
+              <p class="description">Rejoignez des événements sociaux et des activités en groupe pour rencontrer de nouvelles personnes dans un cadre décontracté.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======= Why Us Section ======= -->
+    <section class="why-us section-bg" data-aos="fade-up" date-aos-delay="200">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 video-box">
+            <video src="{% static 'image/Claire_ne_résiste_plus_à_Julien__Ep62_(240p).mp4' %}" autoplay loop controls muted style="width: 500px;"></video>
+            <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="venobox play-btn mb-4" data-vbtype="video" data-autoplay="true"></a>
+          </div>
+          <div class="col-lg-6 d-flex flex-column justify-content-center p-5">
+            <div class="icon-box">
+              <div class="icon"><i class="bx bx-fingerprint"></i></div>
+              <h4 class="title"><a href="">Authenticité Garantie</a></h4>
+              <p class="description">Nous nous engageons à fournir des profils vérifiés et des rencontres authentiques.</p>
+            </div>
+            <div class="icon-box">
+              <div class="icon"><i class="bx bx-gift"></i></div>
+              <h4 class="title"><a href="">Expériences Inoubliables</a></h4>
+              <p class="description">Créez des souvenirs inoubliables avec des personnes spéciales lors de nos événements et activités.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<!-- ======= Features Section ======= -->
+<section class="features">
+  <div class="container">
+    <div class="section-title">
+      <h2>Fonctionnalités</h2>
+      <p>Découvrez les fonctionnalités exclusives de notre plateforme de rencontre, conçues pour vous offrir une expérience unique et personnalisée. Chaque aspect de notre service a été pensé pour répondre aux besoins spécifiques de nos utilisateurs, vous permettant de maximiser vos chances de rencontrer la personne idéale.</p>
+    </div>
+
+    <div class="row" data-aos="fade-up">
+      <div class="col-md-5">
+        <img src="{% static 'image/62432-fr-editorial.jpeg' %}" class="img-fluid" alt="">
+      </div>
+      <div class="col-md-7 pt-4">
+        <h3>Compatibilité Avancée</h3>
+        <p class="fst-italic">Nos algorithmes avancés vous connectent avec des personnes réellement compatibles. Grâce à notre technologie de pointe, nous analysons des milliers de données pour vous proposer des profils qui correspondent parfaitement à vos critères et préférences.</p>
+        <ul>
+          <li><i class="bi bi-check"></i> Algorithmes de matching précis.</li>
+          <li><i class="bi bi-check"></i> Profils vérifiés pour plus de sécurité.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="row" data-aos="fade-up">
+      <div class="col-md-5 order-1 order-md-2">
+        <img src="{% static 'image/tapis-de-bain-couple-noir-sourire.jpg.jpg' %}" class="img-fluid" alt="">
+      </div>
+      <div class="col-md-7 pt-5 order-2 order-md-1">
+        <h3>Événements Exclusifs</h3>
+        <p class="fst-italic">Participez à des événements de rencontre organisés spécifiquement pour nos membres. Nos événements exclusifs offrent une opportunité unique de rencontrer d'autres membres dans un cadre convivial et détendu.</p>
+        <p>Des soirées thématiques, des ateliers interactifs, et des sorties en groupe sont planifiés pour favoriser des échanges naturels et agréables. Rejoignez-nous pour des expériences enrichissantes qui vont bien au-delà des rencontres en ligne traditionnelles.</p>
+      </div>
+    </div>
+
+    <div class="row" data-aos="fade-up">
+      <div class="col-md-5">
+        <img src="{% static 'image/securite.jpg' %}" class="img-fluid" alt="">
+      </div>
+      <div class="col-md-7 pt-5">
+        <h3>Support et Sécurité</h3>
+        <p>Notre équipe de support est disponible 24/7 pour assurer votre sécurité et répondre à vos questions. Nous comprenons l'importance de la sécurité dans les rencontres en ligne, c'est pourquoi nous avons mis en place des mesures strictes pour protéger vos informations personnelles et garantir une expérience sans soucis.</p>
+        <ul>
+          <li><i class="bi bi-check"></i> Support client réactif et professionnel.</li>
+          <li><i class="bi bi-check"></i> Confidentialité et sécurité assurées à chaque étape.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="row" data-aos="fade-up">
+      <div class="col-md-5 order-1 order-md-2">
+        <img src="{% static 'image/cles-personnalisation-experience-client-b2b.jpg' %}" class="img-fluid" alt="">
+      </div>
+      <div class="col-md-7 pt-5 order-2 order-md-1">
+        <h3>Personnalisation</h3>
+        <p class="fst-italic">Personnalisez votre expérience en fonction de vos préférences et intérêts. Notre plateforme vous permet de définir vos critères de recherche et de recevoir des recommandations sur mesure, maximisant ainsi vos chances de trouver des correspondances parfaites.</p>
+        <p>Accédez à des fonctionnalités avancées pour personnaliser votre profil et vos interactions. Que vous recherchiez des sorties culturelles, des activités sportives, ou des soirées tranquilles, nous avons tout ce qu'il vous faut pour rendre chaque rencontre spéciale et mémorable.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!----motivation start-->
+<div class="container-fluid content-items-center text-white text-center mt-3 py-3" style="background: linear-gradient(to right, rgb(129, 63, 222), rgb(205, 19, 168))">
+  <div class="row justify-content-center mt-5 mb-5">
+    <div class="col-lg-6 ">
+      <h2 style="color: white;">5 millions de couples se sont déjà formés
+        sur SoulQuest soyez le prochain !</h2><br>
+      <a href="{% url 'Utilisateurs:inscription' %}" class="btn btn-danger" style="background-color: white; color: black;">Commencez votre propre histoire !</a>
+    </div>
+  </div>
+</div>
+<!----end motivation-->
+
+
+
+ <!-- ======= Testimonials Section ======= -->
+ <section id="temoignage" class="testimonials section-bg">
+  <div class="container">
+
+    <div class="section-title">
+      <h2>Quelques témoignages</h2>
+      <!--<p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>-->
+    </div>
+
+    <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
+      <div class="swiper-wrapper">
+
+        <div class="swiper-slide">
+          <div class="testimonial-item" data-aos="fade-up">
+            <p>
+              <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+              Grâce à SoulQuest, j'ai trouvé l'amour de ma vie. Nous sommes inséparables maintenant!""              <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+            </p>
+            <img src="{% static 'image/images (2).jpg' %}" class="testimonial-img" alt="">
+            <h3>Sophie & Paul</h3>
+          </div>
+        </div><!-- End testimonial item -->
+
+        <div class="swiper-slide">
+          <div class="testimonial-item" data-aos="fade-up" data-aos-delay="100">
+            <p>
+              <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+              Une expérience incroyable, je recommande vivement! Nous sommes tellement heureux ensemble.              <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+            </p>
+            <img src="{% static 'image/couple2.jpg' %}" class="testimonial-img" alt="">
+            <h3>Sophie & Paul</h3>
+          </div>
+        </div><!-- End testimonial item -->
+
+        <div class="swiper-slide">
+          <div class="testimonial-item" data-aos="fade-up" data-aos-delay="200">
+            <p>
+              <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+              Le site m'a aidé à rencontrer des personnes formidables. Merci, SoulQuest!              <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+            </p>
+            <img src="{% static 'image/istockphoto-1387169705-612x612.jpg' %}" class="testimonial-img" alt="">
+            <h3>Julie & Marc</h3>
+          </div>
+        </div><!-- End testimonial item -->
+
+        <div class="swiper-slide">
+          <div class="testimonial-item" data-aos="fade-up" data-aos-delay="300">
+            <p>
+              <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+              Je n'aurais jamais imaginé trouver quelqu'un d'aussi spécial. Merci, SoulQuest!              <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+            </p>
+            <img src="{% static 'image/images.jpg' %}" class="testimonial-img" alt="">
+            <h3>Claire & Hugo</h3>
+          </div>
+        </div><!-- End testimonial item -->
+
+        <div class="swiper-slide">
+          <div class="testimonial-item" data-aos="fade-up" data-aos-delay="400">
+            <p>
+              <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+              Un site fantastique avec une communauté merveilleuse. Nous avons trouvé notre bonheur            </p>
+            <img src="{% static 'image/images (3).jpg' %}" class="testimonial-img" alt="">
+            <h3>Amélie & Mathieu</h3>
+          </div>
+        </div><!-- End testimonial item -->
+
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+
+  </div>
+</section><!-- End Testimonials Section -->
+
+
+<!-- ======= Features Section ======= -->
+<section class="features">
+  <div class="container">
+    
+    <div class="row" data-aos="fade-up">
+      <div class="col-md-5">
+        <img src="{% static 'image/8b75761d-6538-4825-95c9-b5de37877d88 (1).jpg' %}" class="img-fluid" alt="">
+      </div>
+      <div class="col-md-7 pt-4">
+        <h3>Une visibilité étendue de votre profil</h3><br>
+        <p class="fst-italic">SoulQuest ne se limite pas juste à SoulQuest. Inscrivez-vous avec nous, créez le profil parfait pour faire des rencontres en ligne et, pour ne laisser passer aucune chance de trouver la personne idéale, si vous le souhaitez et que vous êtes concerné, votre profil peut être visible auprès des membres de nos services pour les plus de 50 ans ou pour les parents célibataires. Cela signifie que vous aurez plus de chances d’être contactés !</p>
+        
+      </div>
+    </div>
+
+    <div class="row" data-aos="fade-up">
+      <div class="col-md-5 order-1 order-md-2">
+        <img src="{% static 'image/image_2165804_20240212_ob_e0bc87_bullying-7902257-1920.png' %}" class="img-fluid" alt="">
+      </div>
+      <div class="col-md-7 pt-5 order-2 order-md-1">
+        <h3>Le cyberharcèlement ne mène à rien. Encore moins à l’amour.</h3>
+        <p class="fst-italic">SoulQuest s’engage contre le cyberharcèlement pour vous assurer une expérience des plus sécurisées.
+          Si vous recevez des messages insistants, ou qui vous mettent mal à l’aise, vous pouvez :.</p>
+        <p>- Signaler un profil pour alerter le service Modération et Sûreté..</p>
+        <p>- Bloquer un profil pour ne plus être contacté</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="container mt-5 mb-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-3">
+      <a href="{% url 'Utilisateurs:inscription' %}" class="btn btn-danger" style="background-color: #3a1b5e; color: white;">Commencez Maintenant!</a>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="footer-area" style="background-color: #3a1b5e; color: white; padding: 20px 0;">
+  <div class="container text-center">
+      <div class="row">
+          <div class="col-lg-4 col-md-6">
+              <div class="footer-logo">
+                  <a href="#"><img src="{% static 'assets/images/logo/logo GFT.png' %}" alt="SoulQuest Logo" style="max-width: 150px;"></a>
+                  <p>Votre partenaire idéal vous attend sur SoulQuest. Trouvez l'amour de votre vie aujourd'hui!</p>
+              </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+              <div class="footer-links">
+                  <h4 style="color: #f0f0f0;">Liens rapides</h4>
+                  <ul>
+                      <li><a href="#" style="color: #f0f0f0;">Accueil</a></li>
+                      <li><a href="#" style="color: #f0f0f0;">À propos</a></li>
+                      <li><a href="#" style="color: #f0f0f0;">Services</a></li>
+                      <li><a href="#" style="color: #f0f0f0;">Contact</a></li>
+                  </ul>
+              </div>
+          </div>
+          <div class="col-lg-4 col-md-12">
+              <div class="footer-contact">
+                  <h4 style="color: #f0f0f0;">Contactez-nous</h4>
+                  <p><i class="bi bi-geo-alt" style="color: #f0f0f0;"></i> 123 Rue de l'Amour, Cotonou, Bénin</p>
+                  <p><i class="bi bi-envelope" style="color: #f0f0f0;"></i> <a href="mailto:info@soulquest.com" style="color: #f0f0f0;">info@soulquest.com</a></p>
+                  <p><i class="bi bi-telephone" style="color: #f0f0f0;"></i> +229 54 47 00 02</p>
+              </div>
+          </div>
+      </div>
+      <div class="row">
+          <div class="col-12">
+              <div class="footer-bottom" style="border-top: 1px solid #5a3a75; padding-top: 10px;">
+                  <p style="margin: 0;">&copy; 2024 SoulQuest. Tous droits réservés.</p>
+              </div>
+          </div>
+      </div>
+  </div>
+</footer>
+<!-- End Footer -->
+  
+
+
+
+
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Bibliothèques JavaScript tierces -->
+  <script src="{% static 'js/aos.js' %}"></script>
+  <script src="{% static 'js/glightbox.min.js' %}"></script>
+  <script src="{% static 'js/swiper-bundle.min.js' %}"></script>
+
+  <!-- Bootstrap JavaScript -->
+  <script src="{% static 'js/bootstrap.bundle.js' %}"></script>
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.js' %}"></script>
+
+  <!--  scripts personnalisés -->
+  <script src="{% static 'js/main.js' %}"></script>
+  <script src="{% static 'js/main2.js' %}"></script>
+
+
+</body>
+</html>
