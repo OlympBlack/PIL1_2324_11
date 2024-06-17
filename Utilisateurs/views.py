@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from commondatab.models import ZzUsers
 
 from django.shortcuts import render
 from django.http import HttpResponse
@@ -14,4 +15,6 @@ def Connexion(request):
     return render(request, 'Utilisateurs/connexion.html')
 
 def Profil(request):
-    return render(request, 'Utilisateurs/profil.html')
+    users = ZzUsers.objects.all()
+    context = {'users': users}
+    return render(request, 'Utilisateurs/profil.html', context)
