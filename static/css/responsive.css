@@ -1,0 +1,560 @@
+/*Ecran inférieur à 1202px*/
+@media  screen and (max-width: 1202px)  {
+
+    .filter {
+        background-color: transparent;
+        height: 0;
+    }
+
+    .filter .header-right {
+        position: fixed;
+        right: 0;
+        margin-bottom: 10px;
+    }
+
+    .filter .header-right .toggle-menu-btn {
+        display: inline;
+    }
+
+    .filter .fit {
+        position: absolute;
+        right: -100%;
+        z-index: 110;
+        margin-top: 100px;
+        transition: .4s ease-in;
+    }
+
+
+    .fit .filter-form {
+        background-color: var(--light);
+        border-radius: var(--border-radius-12);
+        width: 90%;
+        height: 60vh !important;
+        border: 1px solid transparent;
+        border-color: var(--text-third);
+    }
+
+    .filter-right{
+        right: 0% !important;
+    }
+
+
+
+    .fit .filter-header {
+        display: none;
+    }
+
+    .content {
+        width: calc(100% - 300px);
+        z-index: 100;
+    }
+
+
+
+}
+
+@media  screen and (max-width: 920px){
+    .filter {
+        background-color: transparent;
+        height: 0;
+    }
+
+    .filter .header-right {
+        position: fixed;
+        right: 0;
+        margin-bottom: 10px;
+    }
+
+    .filter .header-right .toggle-menu-btn {
+        display: inline;
+    }
+
+    .filter .fit {
+        position: absolute;
+        right: -100%;
+        z-index: 110;
+        margin-top: 100px;
+        transition: .4s ease-in;
+    }
+
+
+
+    .fit .filter-form {
+        position: relative;
+        background-color: var(--light);
+        border-radius: var(--border-radius-12);
+        width: 90%;
+        height: 60vh !important;
+        border: 1px solid transparent;
+        border-color: var(--text-third);
+    }
+
+    .filter-right{
+        right: 0% !important;
+    }
+
+    .fit .filter-header {
+        display: none;
+    }
+
+    .content {
+        width: calc(100% - 300px);
+        z-index: 100;
+    }
+}
+
+
+
+
+/*Ecran inférieur à 768px*/
+
+@media screen and (max-width: 920) {
+    .filter {
+        background-color: transparent;
+        height: 0;
+    }
+
+    .filter .header-right {
+        position: fixed;
+        right: 0;
+        margin-bottom: 10px;
+    }
+
+    .filter .header-right .toggle-menu-btn {
+        display: inline;
+    }
+
+    .filter .fit {
+        position: absolute;
+        right: -100%;
+        z-index: 110;
+        margin-top: 100px;
+        transition: .4s ease-in;
+    }
+
+
+    .fit .filter-form {
+        position: relative;
+        background-color: var(--light);
+        border-radius: var(--border-radius-12);
+        width: 90%;
+        height: 60vh;
+        border: 1px solid transparent;
+        border-color: var(--text-third);
+    }
+
+    .filter-right{
+        right: 0% !important;
+    }
+
+    .fit .filter-header {
+        display: none;
+    }
+
+    .content {
+        width: calc(100% - 300px);
+        z-index: 100;
+    }
+
+}
+
+@media  screen and (max-width: 920px){
+    .filter {
+        background-color: transparent;
+        height: 0;
+    }
+
+    .filter .header-right {
+        position: fixed;
+        right: 0;
+        top: 0;
+        margin-bottom: 10px;
+        width: 100%;
+    }
+
+    .filter .header-right .toggle-menu-btn {
+        display: inline;
+    }
+
+    .filter .header-right .toggle-chat {
+        display: inline;
+    }
+
+    .filter .fit {
+        position: absolute;
+        right: -100%;
+        z-index: 110;
+        margin-top: 100px;
+        transition: .4s ease-in;
+    }
+
+
+    .fit .filter-form {
+        position: relative;
+        background-color: var(--light);
+        border-radius: var(--border-radius-12);
+        width: 90%;
+        height: 60vh;
+        border: 1px solid transparent;
+        border-color: var(--text-third);
+    }
+
+    .filter-right{
+        right: 0% !important;
+    }
+
+    .fit .filter-header {
+        display: none;
+    }
+
+    .content {
+        position: fixed;
+        width: calc(100% - 150PX);
+        left: 150px;
+        z-index: 100;
+        padding-left: 10;
+    }
+
+    .content .main-title {
+        display: none;
+    }
+
+    .content .scrollbox {
+        margin-top: 48px;
+    }
+
+    .sidebar .aside-header {
+        position: fixed;
+        left: 0;
+        top: 0;
+        margin-top: 10px;
+        padding-left: 30px;
+    }
+
+
+    .aside-header h3{
+        display: none;
+    }
+
+    .sidebar header,
+    .sidebar footer {
+        display: none;
+    }
+
+    .sidebar{
+        position: absolute !important;
+        left: -100%;
+        z-index: 200 !important;
+        margin-left: 10px;
+        margin-top: 48px;
+        height: 80%;
+        background-color: transparent;
+        transition: .4s ease-in-out;
+    }
+
+    .card-footer .like {
+        gap: 1rem;
+    }
+
+    .left0 {
+        position: absolute !important;
+        left: 0%;
+        z-index: 200 !important;
+        margin-left: 10px;
+        margin-top: 48px;
+        height: 80%;
+        background-color: transparent;
+        transition: .4s ease-in-out;
+    }
+
+    .di-none {
+        display: none !important;
+    }
+
+    .di-inline {
+        display: inline !important;
+    }
+
+
+}
+
+@media  screen and (max-width: 768px) {
+    .filter {
+        background-color: transparent;
+        height: 0;
+    }
+
+    .filter .header-right {
+        position: fixed;
+        right: 0;
+        top: 0;
+        margin-bottom: 10px;
+        width: 100%;
+    }
+
+    .filter .header-right .toggle-menu-btn {
+        display: inline;
+    }
+
+    .filter .header-right .toggle-chat {
+        display: inline;
+    }
+
+    .filter .fit {
+        position: absolute;
+        right: -100%;
+        z-index: 110;
+        margin-top: 100px;
+        transition: .4s ease-in;
+    }
+
+
+    .fit .filter-form {
+        position: relative;
+        background-color: var(--light);
+        border-radius: var(--border-radius-12);
+        width: 90%;
+        height: 60vh;
+        border: 1px solid transparent;
+        border-color: var(--text-third);
+    }
+
+    .filter-right{
+        right: 0% !important;
+    }
+
+    .fit .filter-header {
+        display: none;
+    }
+
+    .content {
+        position: fixed;
+        width: calc(100%) !important;
+        left: 0px;
+        z-index: 100;
+        padding-left: 10;
+    }
+
+    .content .main-title {
+        display: none;
+    }
+
+    .content .scrollbox {
+        margin-top: 48px;
+    }
+
+    .sidebar .aside-header {
+        position: fixed;
+        left: 0;
+        top: 0;
+        margin-top: 10px;
+        padding-left: 30px;
+    }
+
+
+    .aside-header h3{
+        display: none;
+    }
+
+    .sidebar header,
+    .sidebar footer {
+        display: none;
+    }
+
+    .sidebar{
+        position: absolute !important;
+        left: -100%;
+        z-index: 200 !important;
+        margin-left: 10px;
+        margin-top: 48px;
+        height: 80%;
+        background-color: transparent;
+        transition: .4s ease-in-out;
+    }
+
+    .card-footer .like {
+        gap: 1rem;
+    }
+
+    .left0 {
+        position: absolute !important;
+        left: 0%;
+        z-index: 200 !important;
+        margin-left: 10px;
+        margin-top: 48px;
+        height: 80%;
+        background-color: transparent;
+        transition: .4s ease-in-out;
+    }
+
+    .di-none {
+        display: none !important;
+    }
+
+    .di-inline {
+        display: inline !important;
+    }
+
+}
+
+@media  screen and (max-width: 625px) {
+    .filter {
+        background-color: transparent;
+        height: 0;
+    }
+
+    .filter .header-right {
+        position: fixed;
+        right: 0;
+        top: 0;
+        margin-bottom: 10px;
+        width: 100%;
+    }
+
+    .filter .header-right .toggle-menu-btn {
+        display: inline;
+    }
+
+    .filter .header-right .toggle-chat {
+        display: inline;
+    }
+
+    .filter .fit {
+        position: absolute;
+        right: -100%;
+        z-index: 110;
+        margin-top: 100px;
+        transition: .4s ease-in;
+    }
+
+
+    .fit .filter-form {
+        position: relative;
+        background-color: var(--light);
+        border-radius: var(--border-radius-12);
+        width: 90%;
+        height: 60vh;
+        border: 1px solid transparent;
+        border-color: var(--text-third);
+    }
+
+    .filter-right{
+        right: 0% !important;
+    }
+
+    .fit .filter-header {
+        display: none;
+    }
+
+    .filter .header-right .profile .profile-info{
+        display: none;
+    }
+
+    .content {
+        position: fixed;
+        width: calc(100%) !important;
+        left: 0px;
+        z-index: 100;
+        padding-left: 10;
+    }
+
+    .content .main-title {
+        display: none;
+    }
+
+    .content .scrollbox {
+        margin-top: 48px;
+    }
+
+    .insights .card {
+        padding: 0;
+        height: 90%;
+    }
+
+    .card .card-container{
+        flex-direction: column;
+    }
+
+    .card .card-header{
+        height: auto;
+    }
+
+    .card-body{
+        width: calc(100%);
+    }
+
+    .sidebar .aside-header {
+        position: fixed;
+        left: 0;
+        top: 0;
+        margin-top: 10px;
+        padding-left: 0px;
+    }
+
+
+    .aside-header h3{
+        display: none;
+    }
+
+    .sidebar header,
+    .sidebar footer {
+        display: none;
+    }
+
+    .sidebar{
+        position: absolute !important;
+        left: -100%;
+        z-index: 200 !important;
+        margin-left: 10px;
+        margin-top: 48px;
+        height: 80%;
+        background-color: transparent;
+        transition: .4s ease-in-out;
+    }
+
+    .card-footer .like {
+        gap: 1rem;
+    }
+
+    .left0 {
+        position: absolute !important;
+        left: 0%;
+        z-index: 200 !important;
+        margin-left: 10px;
+        margin-top: 48px;
+        height: 80%;
+        background-color: transparent;
+        transition: .4s ease-in-out;
+    }
+
+    .di-none {
+        display: none !important;
+    }
+
+    .di-inline {
+        display: inline !important;
+    }
+
+}
+
+@media screen and (max-height: 650px) {
+
+    .card .card-container{
+        flex-direction: column;
+        height: 100% !important;
+    }
+
+    .card .card-header{
+        height: auto;
+    }
+
+    .card-body{
+        height: 100% !important;
+        width: 100%;
+    }
+
+    .insights .card {
+        padding: 0;
+        height: 90%;
+    }
+}
