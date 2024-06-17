@@ -23,6 +23,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('Utilisateurs.urls')),
     path('acceuil/', acceuil, name='acceuil'),
-    path('chat/disc', dicussions, name='acceuil')
+    path('chat/disc', dicussions, name='chat')
 
 ]
