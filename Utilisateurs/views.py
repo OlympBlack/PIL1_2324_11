@@ -15,6 +15,4 @@ def Connexion(request):
     return render(request, 'Utilisateurs/connexion.html')
 
 def Profil(request):
-    users = ZzUsers.objects.all()
-    context = {'users': users}
-    return render(request, 'Utilisateurs/profil.html', context)
+    return render(request, 'Utilisateurs/profil.html')
