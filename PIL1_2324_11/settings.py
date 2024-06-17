@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'Utilisateurs',
     'commondatab',
     'chatapp',
+    'matching',
 
 ]
 
