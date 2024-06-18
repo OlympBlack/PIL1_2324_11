@@ -8,7 +8,7 @@ from django.db import models
 # Feel free to rename the models, but don't rename db_table values or field names.
 from django.utils.crypto import get_random_string
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
-
+from datetime import datetime
 class ZzUsersManager(BaseUserManager):
     def create_user(self, email, password=None, **extra_fields):
         if not email:
@@ -111,7 +111,7 @@ class ZzMedias(models.Model):
 class ZzMessages(models.Model):
     content = models.TextField()
     media = models.ForeignKey(ZzMedias, models.SET_NULL, blank=True, null=True)
-    created_at = models.DateTimeField(blank=True, null=True)
+    created_at = models.DateTimeField(default=datetime.now, blank=True)
     user = models.ForeignKey('ZzUsers', models.DO_NOTHING)
     discussion = models.ForeignKey(ZzDiscussions, models.CASCADE)
     message = models.ForeignKey('self', models.DO_NOTHING)
