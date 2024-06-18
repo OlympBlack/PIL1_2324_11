@@ -196,38 +196,40 @@
             <div class="scrollbox">
                 <div class="scrollbox-inner">
                     <div class="small-talk">
-                        <div class="talk left">
-                            <div class="talk-img">
-                                <img src="{% static 'image/profile.jpg' %}" alt="" width="100%">
-                            </div>
-                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus, provident?</p>
-                        </div>
-            
-                        <div class="talk right">
-                            <div class="talk-img">
-                                <img src="{% static 'image/profile.jpg' %}" alt="" width="100%">
-                            </div>
-                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus, provident?</p>
-                        </div>
-            
-                        <div class="talk left">
-                            <div class="talk-img">
-                                <img src="{% static 'image/profile.jpg' %}" alt="" width="100%">
-                            </div>
-                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus, provident?</p>
-                        </div>
-            
-                        <div class="talk right">
-                            <div class="talk-img">
-                                <img src="{% static 'image/profile.jpg' %}" alt="" width="100%">
-                            </div>
-                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus, provident?</p>
+                        
+                        {% for message in messages %}
+                            {% if message.user_id == user2.user_id %}
+                                <div class="talk left">
+                                    <div class="talk-img">
+                                        <img src="{% static 'image/profile.jpg' %}" alt="" width="100%">
+                                    </div>
+                                    <div class="chat-mes-hor">
+                                        <p>{{ message.content }}</p>
+                                        <small>14:15</small>
+                                    </div>    
+                                </div>
+                            {% else %}
+                                <div class="talk right">
+                                    <div class="talk-img">
+                                        <img src="{% static 'image/profile.jpg' %}" alt="" width="100%">
+                                    </div>
+                                    <div class="chat-mes-hor">
+                                        <p>{{ message.content }}</p>
+                                        <small>14:15</small>
+                                    </div>    
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                        <div class="chat-date">
+                            <small>Aujourd'hui</small>
                         </div>
                     </div>
                 </div>
+
             </div>
 
-                <form action="" class="chat-footer">
+                <form id="chat-form" class="chat-footer">
+                    {% csrf_token %}
                     <div class="container-chat">
         
                         <div class="chat-file-logo">
@@ -235,14 +237,14 @@
                         </div>
         
                         <div class="chat-group">
-                            <textarea name="" id="" placeholder="Entrez votre message" minlength="1"></textarea>
+                            <textarea name="message" id="message" placeholder="Entrez votre message" minlength="1"></textarea>
                             <span class="bi-camera-fill"></span>
                         </div>
-        
-                        <button class="chat-submit" type="submit">
+                        <input type="number" hidden="hidden" value="{{ disc }}" id="disc" >
+                        <button id="chatSubmit" class="chat-submit" type="submit">
                             <span class="bi-send"></span>
                         </button>
-        
+                        
                     </div>
                 </form>
 

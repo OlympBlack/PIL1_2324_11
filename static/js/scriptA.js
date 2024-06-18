@@ -83,4 +83,45 @@ function minScrenn() {
     }
 }
 
+//TRAITEMENT DE L'ENVOIE DES MESSAGES
+
+const chatForm = document.querySelector("#chat-form");
+const sendButton = document.querySelector("#chatSubmit");
+
+sendButton.addEventListener("click", async (event) => {
+    event.preventDefault();
+
+    const message = chatForm.querySelector("#message").value;
+    const disc = chatForm.querySelector("#disc").value
+    const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value
+    console.log(disc)
+
+
+    try {
+        dataTosend = {
+            disc : disc,
+            message : message
+        }
+        const response = await fetch(`/send/${disc}`, {
+            method: "POST",
+            body: JSON.stringify(dataTosend),
+            headers: {
+                "Content-Type": "application/json",
+                'X-CSRFToken': csrfToken,
+            },
+        });
+
+        if (response.ok) {
+            // Le message a été envoyé avec succès
+            console.log("Message envoyé !");
+        } else {
+            // Gestion des erreurs (par exemple, afficher un message d'erreur)
+            console.error("Erreur lors de l'envoi du message :", response.status);
+        }
+    } catch (error) {
+        console.error("Erreur lors de l'envoi des données :", error);
+    }
+});
+
+
 

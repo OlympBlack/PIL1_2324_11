@@ -17,12 +17,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from matching.views import acceuil
-from chatapp.views import dicussions
+from chatapp.views import discussions, send
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('Utilisateurs.urls')),
     path('acceuil/', acceuil, name='acceuil'),
-    path('chat/disc', dicussions, name='chat')
+    path('chat/disc/<int:discID>', discussions, name='chat'),
+    path('send/<int:disc>', send, name='send')
 
 ]

@@ -436,6 +436,35 @@ footer h2 {
     border-radius: 50%;
 }
 
+.small-talk .chat-mes-hor {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.small-talk .chat-date {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    opacity: 0.7;
+}
+
+.right .chat-mes-hor small{
+    margin-left: auto;
+    margin-right: 25px;
+    opacity: 0.7;
+    font-size: 11px;
+}
+
+.left .chat-mes-hor small{
+    margin-right: auto;
+    margin-left: 25px;
+    opacity: 0.7;
+    font-size: 11px;
+}
+
 .talk p{
     padding-left: 15px;
     line-height: 25px;
