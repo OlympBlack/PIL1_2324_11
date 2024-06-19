@@ -93,3 +93,5 @@ def Connexion(request):
 
 def Profil(request):
     return render(request, 'Utilisateurs/profil.html')
+
+>>>>>>>>> Temporary merge branch 2
