@@ -285,12 +285,18 @@
 
             <div class="profile">
                 <div class="profile-info">
-                    <p>Salut, <strong>Afriquetec</strong></p>
+                    <p><strong> {{ user.pseudo }} </strong></p>
                     <small>Admin</small>
                 </div>
 
                 <div class="profile-image">
-                    <img src="{% static 'image/profile.jpg' %}" alt="" width="100%">
+                    <a href="{% url 'Utilisateurs:profil' user.id %}">
+                        {% if user.profile_media %}
+                            <img src="{{ user.profile_media.url }}" alt="" width="100%">
+                        {% else %}
+                            <img src="{% static 'image/avatard.avif' %}" alt="" width="100%">
+                        {% endif %}
+                    </a>
                 </div>
             </div>
         </header>

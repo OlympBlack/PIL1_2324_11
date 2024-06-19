@@ -54,6 +54,7 @@ class ZzUsers(AbstractBaseUser, PermissionsMixin):
     is_superuser=models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
+    profile_media = models.FileField(upload_to='profile_media/', blank=True, null=True)
     objects = ZzUsersManager()
     confirmation_token = models.CharField(max_length=100, blank=True, null=True)
 

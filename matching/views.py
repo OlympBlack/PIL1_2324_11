@@ -1,7 +1,12 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
 
-# Create your views here.
+#@login_required
+"""def acceuil(request):
+    zzuser = request.user
+    context = {'zzuser': zzuser}
+    return render(request, 'acceuil/index.html', context)"""
 
-def acceuil(request, *args, **kargs):
-    return render(request, 'acceuil/index.html')
+@login_required
+def acceuil(request):
+    return render(request, 'acceuil/index.html', {'user': request.user})

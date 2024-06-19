@@ -23,7 +23,7 @@
 				</div>
 				<div class="form-group">
 					<label for="username">Pseudo</label>
-					<input type="text" name="username" class="form-control" id="username" placeholder="Pseudo" required="required">
+					<input type="text" name="pseudo" class="form-control" id="username" placeholder="Pseudo" required="required">
 				</div>
 				<div class="form-group">
 					<label for="password">Mot de passe</label>
@@ -45,7 +45,7 @@
 						<option value="autre">Autre</option>
 					</select>
 				</div><br>
-				<fieldset>
+				<!--<fieldset>
 					<legend>Préférence :</legend>
 					<div class="form-check form-check-inline">
 						<input class="form-check-input" type="radio" name="preference" id="preference1" value="male" required>
@@ -67,7 +67,11 @@
 						<option value="serious">Sérieuse</option>
 						<option value="casual">Sans engagement</option>
 					</select>
-				</div><br>
+				</div><br>-->
+				<div class="mb-3">
+					<label for="profile_media" class="form-label">Photo ou vidéo de profil</label>
+					<input type="file" id="profile_media" class="form-control" name="profile_media">
+				</div>
 				<div class="form-group">
 					<button type="button" id="backBtn" class="btn-custom btn-sm">Retour</button><br><br>
 					<button type="submit" class="btn-custom btn-sm">S'inscrire</button>
