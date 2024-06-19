@@ -89,3 +89,76 @@ def profil(request, id):
     context = {'user': user}
     return render(request, 'Utilisateurs/profil.html', context)
 
+
+#fonction de deconnection
+@login_required
+def Logout(request):
+    logout(request)
+    return redirect('Utilisateurs:connexion')
+
+
+#la fonction pour supprimer son compte
+@login_required
+def delete_account(request):
+    if request.method == 'POST':
+        user = request.user
+        user.delete()
+        messages.success(request, 'Votre compte a été supprimé avec succès.')
+        logout(request)
+        return redirect('Utilisateurs:index') 
+
+
+# la fonction pour la mise à jour du profil utilisateurs
+@login_required
+def update_account(request):
+    if request.method == 'POST':
+        user = request.user
+
+        # Récupérer les données du formulaire avec des valeurs par défaut
+        email = request.POST.get('email', 'aucun')
+        pseudo = request.POST.get('pseudo', 'aucun')
+        nom = request.POST.get('nom', 'aucun')
+        prenom = request.POST.get('prenom', 'aucun')
+        password = request.POST.get('password', 'aucun')  # Corrected typo
+        birthday_str = request.POST.get('birthday', None)
+
+        if birthday_str:
+            try:
+                birthday = datetime.strptime(birthday_str, '%Y-%m-%d').date()
+            except ValueError:
+                birthday = None
+        else:
+            birthday = None
+
+        bio = request.POST.get('bio', 'aucun')
+        sex = request.POST.get('sex', 'aucun')
+        plage = request.POST.get('plage', 'aucun')
+        astre = request.POST.get('astre', 'aucun')
+        religion = request.POST.get('religion', 'aucun')
+        city = request.POST.get('city', 'aucun')
+        country = request.POST.get('country', 'aucun')
+        # hobby = request.POST.get('hobby', '[]')  
+        # pref = request.POST.get('pref', '[]')  # JSON string
+
+        # Mise à jour des champs de l'utilisateur
+        user.email = email
+        user.pseudo = pseudo
+        user.nom = nom
+        user.prenom = prenom
+        user.password = password
+        user.birthday = birthday
+        user.bio = bio
+        user.sex = sex
+        user.plage = plage
+        user.astre = astre
+        user.religion = religion
+        user.city = city
+        user.country = country
+        # user.hobby = json.loads(hobby)  # Convertir JSON string en Python list
+        # user.pref = json.loads(pref)  # Convertir JSON string en Python list
+        user.save()
+
+        messages.success(request, 'Votre compte a été mis à jour avec succès.')
+        return redirect('Utilisateurs:profil', id=user.id)
+    else:
+        return render(request, 'Utilisateurs/update_account.html', {'user': request.user})
