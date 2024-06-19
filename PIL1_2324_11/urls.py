@@ -16,8 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from matching.views import acceuil
+from chatapp.views import dicussions
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('Utilisateurs.urls')),
+    path('acceuil/', acceuil, name='acceuil'),
+    path('chat/disc', dicussions, name='chat')
+
 ]

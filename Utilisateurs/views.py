@@ -1,4 +1,6 @@
-from django.shortcuts import render#, redirect, get_object_or_404
+from django.shortcuts import render
+
+from django.shortcuts import render
 from django.http import HttpResponse
 """from django.contrib.auth import login, authenticate
 from django.contrib.auth.models import User"""
@@ -91,4 +93,3 @@ def Connexion(request):
 
 def Profil(request):
     return render(request, 'Utilisateurs/profil.html')
-
