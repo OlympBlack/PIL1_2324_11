@@ -16,14 +16,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from matching.views import acceuil
-from chatapp.views import discussions, send
+from matching.views import acceuil, saveLike, deleteLike
+from chatapp.views import discussions, send, getMessages
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('Utilisateurs.urls')),
     path('acceuil/', acceuil, name='acceuil'),
     path('chat/disc/<int:discID>', discussions, name='chat'),
-    path('send/<int:disc>', send, name='send')
+    path('send/<int:disc>', send, name='send'),
+    path('getMessages/<int:disc>-<int:lastID>', getMessages, name='getMessages'),
+    path('like/<int:liker>-<int:liked>', saveLike, name='saveLike'),
+    path('delike/<int:liker>-<int:liked>', deleteLike, name='deleteLike'),
+
 
 ]

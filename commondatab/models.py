@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 # This is an auto-generated Django model module.
 # You'll have to do the following manually to clean this up:
 #   * Rearrange models' order
@@ -111,7 +112,7 @@ class ZzMedias(models.Model):
 class ZzMessages(models.Model):
     content = models.TextField()
     media = models.ForeignKey(ZzMedias, models.SET_NULL, blank=True, null=True)
-    created_at = models.DateTimeField(default=datetime.now, blank=True)
+    created_at = models.DateTimeField(default=timezone.now, blank=True)
     user = models.ForeignKey('ZzUsers', models.DO_NOTHING)
     discussion = models.ForeignKey(ZzDiscussions, models.CASCADE)
     message = models.ForeignKey('self', models.DO_NOTHING)
