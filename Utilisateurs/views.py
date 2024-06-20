@@ -30,17 +30,30 @@ load_dotenv()"""
 
 
 
+"""from django.shortcuts import render, redirect, get_object_or_404
+from django.http import HttpResponse
+from django.contrib.auth import login, authenticate, logout
+from django.contrib.auth.hashers import make_password
+from django.contrib.auth.decorators import login_required
+from django.contrib import messages
+from datetime import datetime
+from commondatab.models import ZzUsers
+from django.urls import reverse
+from django.views import View"""
+
 def Index(request):
     return render(request, "Utilisateurs/index.html")
 
-
-# la fonction pour la page inscriptiondef Inscription(request):
 def Inscription(request):
     if request.method == 'POST':
         pseudo = request.POST.get('pseudo', '')
         email = request.POST.get('email', '')
-        password1 = request.POST.get('password', '')
+        password1 = request.POST.get('password1', '')
+        password2 = request.POST.get('password2', '')
         sexe = request.POST.get('sexe', '')
+        city = request.POST.get('city', '')
+        latitude = request.POST.get('latitude', '0')  # Default latitude value
+        longitude = request.POST.get('longitude', '0')  # Default longitude value
         birthday_str = request.POST.get('birthday', None)
 
         if birthday_str:
@@ -50,6 +63,7 @@ def Inscription(request):
                 birthday = None
         else:
             birthday = None
+
         profile_media = request.FILES.get('profile_media')
 
         if not pseudo:
@@ -65,30 +79,28 @@ def Inscription(request):
             pseudo=pseudo,
             password=make_password(password1),
             sex=sexe,
+            city=city,
+            latitude=latitude,
+            longitude=longitude,
             birthday=birthday,
             profile_media=profile_media,
         )
         user.save()
 
-        # Authentifier et connecter automatiquement l'utilisateur
-        authenticated_user = authenticate(request, email=email, password=password1)
+        authenticated_user = authenticate(request, username=email, password=password1)
         if authenticated_user is not None:
             login(request, authenticated_user)
-            # Définir la variable de session
             request.session['new_user'] = True
             return redirect(reverse('Utilisateurs:profil', kwargs={'id': user.id}))
 
     return render(request, 'Utilisateurs/inscription.html')
-
-
-#fonction de connexion
 def Connexion(request):
     if request.method == 'POST':
         email = request.POST.get('email')
         password = request.POST.get('password')
-        
+
         user = authenticate(request, username=email, password=password)
-        
+
         if user is not None:
             login(request, user)
             return redirect('acceuil') 
@@ -98,8 +110,6 @@ def Connexion(request):
     
     return render(request, 'Utilisateurs/connexion.html')
 
-
-#fonction de la page profil
 @login_required
 def profil(request, id):
     user = get_object_or_404(ZzUsers, pk=id)
@@ -107,14 +117,11 @@ def profil(request, id):
     context = {'user': user, 'new_user': new_user}
     return render(request, 'Utilisateurs/profil.html', context)
 
-#fonction de deconnection
 @login_required
 def Logout(request):
     logout(request)
     return redirect('Utilisateurs:connexion')
 
-
-#la fonction pour supprimer son compte
 @login_required
 def delete_account(request):
     if request.method == 'POST':
@@ -124,19 +131,16 @@ def delete_account(request):
         logout(request)
         return redirect('Utilisateurs:index') 
 
-
-# la fonction pour la mise à jour du profil utilisateurs
 @login_required
 def update_account(request):
     if request.method == 'POST':
         user = request.user
 
-        # Récupérer les données du formulaire avec des valeurs par défaut
         email = request.POST.get('email', 'aucun')
         pseudo = request.POST.get('pseudo', 'aucun')
         nom = request.POST.get('nom', 'aucun')
         prenom = request.POST.get('prenom', 'aucun')
-        password = request.POST.get('password', 'aucun')  # Corrected typo
+        password = request.POST.get('password', 'aucun')
         birthday_str = request.POST.get('birthday', None)
 
         if birthday_str:
@@ -154,10 +158,7 @@ def update_account(request):
         religion = request.POST.get('religion', 'aucun')
         city = request.POST.get('city', 'aucun')
         country = request.POST.get('country', 'aucun')
-        # hobby = request.POST.get('hobby', '[]')  
-        # pref = request.POST.get('pref', '[]')  # JSON string
 
-        # Mise à jour des champs de l'utilisateur
         user.email = email
         user.pseudo = pseudo
         user.nom = nom
@@ -171,8 +172,6 @@ def update_account(request):
         user.religion = religion
         user.city = city
         user.country = country
-        # user.hobby = json.loads(hobby)  # Convertir JSON string en Python list
-        # user.pref = json.loads(pref)  # Convertir JSON string en Python list
         user.save()
 
         messages.success(request, 'Votre compte a été mis à jour avec succès.')
@@ -180,14 +179,9 @@ def update_account(request):
     else:
         return render(request, 'Utilisateurs/update_account.html', {'user': request.user})
 
-
-
-
-
 def welcome_view(request):
     print("La vue de bienvenue a été appelée")  # Message de debug
     return render(request, 'welcome.html', context={'message': 'Bienvenue!'})
-
 
 class ProfileView(View):
     def get(self, request):

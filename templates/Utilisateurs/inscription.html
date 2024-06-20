@@ -1,7 +1,6 @@
 {% extends 'main _compte.html' %}
 
 {% block content %}
-
 <div class="container">
     <div class="form-container">
         <form action="" method="post" class="form" enctype="multipart/form-data">
@@ -22,18 +21,18 @@
                     <input type="text" name="pseudo" class="form-control" id="pseudo" placeholder="Entrer votre pseudo..." required>
                 </div>
                 <div class="form-group">
-                    <label for="password">Mot de passe</label>
+                    <label for="password1">Mot de passe</label>
                     <input type="password" name="password1" class="form-control" id="password1" placeholder="Entrez votre mot de passe..." required>
                 </div>
-				<div class="form-group">
-                    <label for="repassword">Confirmez votre mot de passe</label>
+                <div class="form-group">
+                    <label for="password2">Confirmez votre mot de passe</label>
                     <input type="password" name="password2" class="form-control" id="password2" placeholder="Reéntrez votre mot de passe..." required>
                 </div>
                 <div class="form-group">
                     <button type="button" id="nextBtn" class="btn">Suivant</button>
                 </div>
             </div>
-            <!--<div id="additional-fields" class="form-step hidden"-->
+            <div id="additional-fields" class="form-step hidden">
                 <div class="form-group">
                     <label for="gender">Sexe</label>
                     <select name="sexe" class="form-control" id="gender" required>
@@ -43,17 +42,16 @@
                         <option value="autre">Autre</option>
                     </select>
                 </div>
-				<div class="form-group">
-                    <label for="city">Confirmez votre mot de passe</label>
-                    <input type="text" name="city" class="form-control" id="city" placeholder="Reéntrez votre mot de passe..." required>
+                <div class="form-group">
+                    <label for="city">Ville</label>
+                    <input type="text" name="city" class="form-control" id="city" placeholder="Entrez votre ville..." required>
                 </div>
-				<div class="form-group">
-					<input type="hidden" id="id_latitude" name="latitude">
-				</div>
-				<div class="form-group">
-					<input type="hidden" id="id_longitude" name="longitude">
-				</div>
-        
+                <div class="form-group">
+                    <input type="hidden" id="id_latitude" name="latitude">
+                </div>
+                <div class="form-group">
+                    <input type="hidden" id="id_longitude" name="longitude">
+                </div>
                 <fieldset>
                     <legend>Préférence :</legend>
                     <div class="form-check form-check-inline">
@@ -79,7 +77,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="birthday" class="form-label">Date de naissance</label>
-                    <input type="date" id="birthday" class="form-control" name="birthday" value="{{ user.birthday|date:'Y-m-d' }}">
+                    <input type="date" id="birthday" class="form-control" name="birthday">
                 </div>
                 <div class="form-group">
                     <label for="profile_media">Photo de profil</label>
@@ -92,7 +90,7 @@
                     <button type="button" id="backBtn" class="btn">Retour</button><br>
                     <button type="submit" class="btn">S'inscrire</button>
                 </div>
-            <!--</div>-->
+            </div>
         </form>
         <p class="text-center"><a href="{% url 'Utilisateurs:connexion' %}" class="link">Déjà inscrit ? Connectez-vous</a></p>
     </div>

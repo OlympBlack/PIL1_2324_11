@@ -7,55 +7,54 @@
     <title>SoulQuest</title>
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'Utilisateurs/css/styles.css' %}">
-<!-- templates/registration_form.html -->
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
-    } else {
-        document.getElementById('location_error').innerText = 'La géolocalisation n\'est pas supportée par ce navigateur.';
-    }
-
-    function successCallback(position) {
-        var latitude = position.coords.latitude;
-        var longitude = position.coords.longitude;
-
-        document.getElementById('id_latitude').value = latitude;
-        document.getElementById('id_longitude').value = longitude;
-
-        fetch('https://api.mapbox.com/geocoding/v5/mapbox.places/${longitude},${latitude}.json?access_token=pk.eyJ1IjoiYWdib3RhLXN0ZXZlbnMiLCJhIjoiY2x4bTRrbDk2MDRmeTJrczF0OThva2ppNSJ9.KMUDCIB2AlAUJ595Bru5hw')
-            .then(response => response.json())
-            .then(data => {
-                if (data.features && data.features.length > 0) {
-                    var city = data.features[0].context.find(context => context.id.includes('place')).text;
-                    var country = data.features[0].context.find(context => context.id.includes('country')).text;
-
-                    document.getElementById('id_city').value = city;
-                    document.getElementById('id_country').value = country;
-                }
-            });
-    }
-
-    function errorCallback(error) {
-        switch (error.code) {
-            case error.PERMISSION_DENIED:
-                document.getElementById('location_error').innerText = 'L\'utilisateur a refusé la demande de géolocalisation.';
-                break;
-            case error.POSITION_UNAVAILABLE:
-                document.getElementById('location_error').innerText = 'Les informations de localisation ne sont pas disponibles.';
-                break;
-            case error.TIMEOUT:
-                document.getElementById('location_error').innerText = 'La demande de localisation a expiré.';
-                break;
-            case error.UNKNOWN_ERROR:
-                document.getElementById('location_error').innerText = 'Une erreur inconnue est survenue.';
-                break;
+    <!-- templates/registration_form.html -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+        } else {
+            document.getElementById('location_error').innerText = 'La géolocalisation n\'est pas supportée par ce navigateur.';
         }
-    }
-});
-</script>
-</head>
 
+        function successCallback(position) {
+            var latitude = position.coords.latitude;
+            var longitude = position.coords.longitude;
+
+            document.getElementById('id_latitude').value = latitude;
+            document.getElementById('id_longitude').value = longitude;
+
+            fetch(https://api.mapbox.com/geocoding/v5/mapbox.places/${longitude},${latitude}.json?access_token=pk.eyJ1IjoiYWdib3RhLXN0ZXZlbnMiLCJhIjoiY2x4bTRrbDk2MDRmeTJrczF0OThva2ppNSJ9.KMUDCIB2AlAUJ595Bru5hw)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.features && data.features.length > 0) {
+                        var city = data.features[0].context.find(context => context.id.includes('place')).text;
+                        var country = data.features[0].context.find(context => context.id.includes('country')).text;
+
+                        document.getElementById('id_city').value = city;
+                        document.getElementById('id_country').value = country;
+                    }
+                });
+        }
+
+        function errorCallback(error) {
+            switch (error.code) {
+                case error.PERMISSION_DENIED:
+                    document.getElementById('location_error').innerText = 'L\'utilisateur a refusé la demande de géolocalisation.';
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    document.getElementById('location_error').innerText = 'Les informations de localisation ne sont pas disponibles.';
+                    break;
+                case error.TIMEOUT:
+                    document.getElementById('location_error').innerText = 'La demande de localisation a expiré.';
+                    break;
+                case error.UNKNOWN_ERROR:
+                    document.getElementById('location_error').innerText = 'Une erreur inconnue est survenue.';
+                    break;
+            }
+        }
+    });
+    </script>
+</head>
 
 <body>
 

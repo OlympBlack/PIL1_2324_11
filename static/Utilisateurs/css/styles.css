@@ -10,37 +10,46 @@ body {
     height: 100vh;
     overflow: hidden;
 }
+
 .container {
     width: 100%;
     max-width: 600px;
     padding: 20px;
 }
+
 .form-container {
     background: rgba(0, 0, 0, 0.3);
     padding: 30px;
-    border-radius: 60px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    border-radius: 15px;  /* Adjusted border radius for better aesthetics */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     animation: fadeIn 1s ease-in-out;
+    overflow-y: auto;  /* Allow vertical scrolling if content is too long */
+    max-height: 80vh;  /* Set maximum height */
 }
+
 .form-container h2 {
     text-align: center;
     margin-bottom: 20px;
     color: #FFFFFF;
 }
+
 .form-group {
     margin-bottom: 15px;
 }
+
 .form-group label {
     display: block;
     margin-bottom: 5px;
     color: #FFFFFF;
 }
+
 .form-group button {
     border-radius: 25px;
     font-weight: bold;
-    background:linear-gradient(to left, #8A2BE2, #FFC0CB);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    background: linear-gradient(to left, #8A2BE2, #FFC0CB);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
 .form-control {
     width: 100%;
     padding: 10px;
@@ -48,11 +57,13 @@ body {
     border-radius: 25px;
     background-color: rgba(255, 255, 255, 0.2);
     color: #FFFFFF;
-    outline-color: none !important;
+    outline: none !important;
 }
+
 .form-control::placeholder {
     color: #714545;
 }
+
 .btn {
     width: 100%;
     padding: 10px;
@@ -64,32 +75,38 @@ body {
     cursor: pointer;
     transition: background 0.3s, transform 0.3s;
 }
+
 .btn:hover {
     background: linear-gradient(to right, #8A2BE2, #FFC0CB);
     transform: translateY(-3px);
-    transition: 2s;
-    
+    transition: 0.3s;
 }
+
 .link {
-    color: #FFf;
+    color: #FFF;
     text-decoration: none;
     transition: color 0.3s;
 }
+
 .link:hover {
     color: #af2626;
 }
+
 .clearfix {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
+
 .alert {
     text-align: center;
     margin-bottom: 15px;
 }
+
 .hidden {
     display: none;
 }
+
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }

@@ -1,0 +1,548 @@
+#main _compte.html
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>SoulQuest</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'Utilisateurs/css/styles.css' %}">
+<!-- templates/registration_form.html -->
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+    } else {
+        document.getElementById('location_error').innerText = 'La géolocalisation n\'est pas supportée par ce navigateur.';
+    }
+
+    function successCallback(position) {
+        var latitude = position.coords.latitude;
+        var longitude = position.coords.longitude;
+
+        document.getElementById('id_latitude').value = latitude;
+        document.getElementById('id_longitude').value = longitude;
+
+        fetch('https://api.mapbox.com/geocoding/v5/mapbox.places/${longitude},${latitude}.json?access_token=pk.eyJ1IjoiYWdib3RhLXN0ZXZlbnMiLCJhIjoiY2x4bTRrbDk2MDRmeTJrczF0OThva2ppNSJ9.KMUDCIB2AlAUJ595Bru5hw')
+            .then(response => response.json())
+            .then(data => {
+                if (data.features && data.features.length > 0) {
+                    var city = data.features[0].context.find(context => context.id.includes('place')).text;
+                    var country = data.features[0].context.find(context => context.id.includes('country')).text;
+
+                    document.getElementById('id_city').value = city;
+                    document.getElementById('id_country').value = country;
+                }
+            });
+    }
+
+    function errorCallback(error) {
+        switch (error.code) {
+            case error.PERMISSION_DENIED:
+                document.getElementById('location_error').innerText = 'L\'utilisateur a refusé la demande de géolocalisation.';
+                break;
+            case error.POSITION_UNAVAILABLE:
+                document.getElementById('location_error').innerText = 'Les informations de localisation ne sont pas disponibles.';
+                break;
+            case error.TIMEOUT:
+                document.getElementById('location_error').innerText = 'La demande de localisation a expiré.';
+                break;
+            case error.UNKNOWN_ERROR:
+                document.getElementById('location_error').innerText = 'Une erreur inconnue est survenue.';
+                break;
+        }
+    }
+});
+</script>
+</head>
+
+
+<body>
+
+{% block content %}
+{% endblock content %}
+
+<script src="{% static 'Utilisateurs/js/scripts.js' %}"></script>
+<script src="{% static 'Utilisateurs/js/inscription_script.js' %}"></script>
+
+</body>
+</html>
+
+#inscription.html
+
+{% extends 'main _compte.html' %}
+
+{% block content %}
+
+<div class="container">
+    <div class="form-container">
+        <form action="" method="post" class="form" enctype="multipart/form-data">
+            {% csrf_token %}
+            <h2>Inscription</h2>
+            <div class="alert">
+                {% for message in messages %}
+                    {{ message }}
+                {% endfor %}
+            </div>
+            <div id="initial-fields" class="form-step">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" class="form-control" id="email" placeholder="Entrez votre email..." required>
+                </div>
+                <div class="form-group">
+                    <label for="pseudo">Pseudo</label>
+                    <input type="text" name="pseudo" class="form-control" id="pseudo" placeholder="Entrer votre pseudo..." required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Mot de passe</label>
+                    <input type="password" name="password1" class="form-control" id="password1" placeholder="Entrez votre mot de passe..." required>
+                </div>
+				<div class="form-group">
+                    <label for="repassword">Confirmez votre mot de passe</label>
+                    <input type="password" name="password2" class="form-control" id="password2" placeholder="Reéntrez votre mot de passe..." required>
+                </div>
+                <div class="form-group">
+                    <button type="button" id="nextBtn" class="btn">Suivant</button>
+                </div>
+            </div>
+            <div id="additional-fields" class="form-step hidden"
+                <div class="form-group">
+                    <label for="gender">Sexe</label>
+                    <select name="sexe" class="form-control" id="gender" required>
+                        <option value="">Sélectionner</option>
+                        <option value="homme">Homme</option>
+                        <option value="femme">Femme</option>
+                        <option value="autre">Autre</option>
+                    </select>
+                </div>
+				<div class="form-group">
+                    <label for="city">Ville</label>
+                    <input type="text" name="city" class="form-control" id="city" placeholder="Reéntrez votre mot de passe..." required>
+                </div>
+				<div class="form-group">
+					<input type="hidden" id="id_latitude" name="latitude">
+				</div>
+				<div class="form-group">
+					<input type="hidden" id="id_longitude" name="longitude">
+				</div>
+        
+                <fieldset>
+                    <legend>Préférence :</legend>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="preference" id="preference1" value="male" required>
+                        <label class="form-check-label" for="preference1">Homme</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="preference" id="preference2" value="female" required>
+                        <label class="form-check-label" for="preference2">Femme</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="preference" id="preference3" value="both" required>
+                        <label class="form-check-label" for="preference3">Les deux</label>
+                    </div>
+                </fieldset>
+                <div class="form-group">
+                    <label for="relationship_status">Relation</label>
+                    <select name="relation" class="form-control" id="relationship_status" required>
+                        <option value="">Sélectionner</option>
+                        <option value="serious">Sérieuse</option>
+                        <option value="casual">Sans engagement</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="birthday" class="form-label">Date de naissance</label>
+                    <input type="date" id="birthday" class="form-control" name="birthday" value="{{ user.birthday|date:'Y-m-d' }}">
+                </div>
+                <div class="form-group">
+                    <label for="profile_media">Photo de profil</label>
+                    <input type="file" name="profile_media" class="form-control" id="profile_media" required onchange="previewImage(event)">
+                    <div class="preview-container" style="display: flex; justify-content: center; align-items: center; height: 200px;">
+                        <img id="preview" src="#" alt="Prévisualisation de l'image" style="display: none; max-width: 150px; height: auto; border-radius: 10%; border: 2px solid #ddd; padding: 5px;">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button type="button" id="backBtn" class="btn">Retour</button><br>
+                    <button type="submit" class="btn">S'inscrire</button>
+                </div>
+            </div>
+        </form>
+        <p class="text-center"><a href="{% url 'Utilisateurs:connexion' %}" class="link">Déjà inscrit ? Connectez-vous</a></p>
+    </div>
+</div>
+
+<script>
+    function previewImage(event) {
+        var input = event.target;
+        var reader = new FileReader();
+        reader.onload = function(){
+            var dataURL = reader.result;
+            var output = document.getElementById('preview');
+            output.src = dataURL;
+            output.style.display = 'block';
+        };
+        reader.readAsDataURL(input.files[0]);
+    }
+</script>
+
+{% endblock content %}
+
+#styles.css
+body {
+    color: #F8F8F8;
+    background: linear-gradient(to right, #892be2a0, #ffc0cbd0);
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+}
+.container {
+    width: 100%;
+    max-width: 600px;
+    padding: 20px;
+}
+.form-container {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 30px;
+    border-radius: 60px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    animation: fadeIn 1s ease-in-out;
+}
+.form-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #FFFFFF;
+}
+.form-group {
+    margin-bottom: 15px;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #FFFFFF;
+}
+.form-group button {
+    border-radius: 25px;
+    font-weight: bold;
+    background:linear-gradient(to left, #8A2BE2, #FFC0CB);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 25px;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #FFFFFF;
+    outline-color: none !important;
+}
+.form-control::placeholder {
+    color: #714545;
+}
+.btn {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background: #FFFFFF;
+    color: #8A2BE2;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+}
+.btn:hover {
+    background: linear-gradient(to right, #8A2BE2, #FFC0CB);
+    transform: translateY(-3px);
+    transition: 2s;
+    
+}
+.link {
+    color: #FFf;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+.link:hover {
+    color: #af2626;
+}
+.clearfix {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.alert {
+    text-align: center;
+    margin-bottom: 15px;
+}
+.hidden {
+    display: none;
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+#inscription_script.js
+document.getElementById('nextBtn').addEventListener('click', function() {
+    var email = document.getElementById('email').value;
+    var pseudo = document.getElementById('pseudo').value;
+    var password1 = document.getElementById('password1').value;
+    var password2 = document.getElementById('password2').value;
+
+    
+    if (email && pseudo && password1 && password2) {
+        document.getElementById('initial-fields').classList.add('hidden');
+        document.getElementById('additional-fields').classList.remove('hidden');
+    } else {
+        alert('Veuillez remplir tous les champs de la première partie.');
+    }
+});
+
+document.getElementById('backBtn').addEventListener('click', function() {
+    document.getElementById('additional-fields').classList.add('hidden');
+    document.getElementById('initial-fields').classList.remove('hidden');
+});
+
+#scripts.js
+document.getElementById('nextBtn').addEventListener('click', function() {
+    var email = document.getElementById('email').value;
+    var pseudo = document.getElementById('pseudo').value;
+    var password = document.getElementById('password').value;
+
+    if (email && pseudo && password) {
+        document.getElementById('initial-fields').classList.add('hidden');
+        document.getElementById('additional-fields').classList.remove('hidden');
+    } else {
+        alert('Veuillez remplir tous les champs de la première partie.');
+    }
+});
+
+document.getElementById('backBtn').addEventListener('click', function() {
+    document.getElementById('additional-fields').classList.add('hidden');
+    document.getElementById('initial-fields').classList.remove('hidden');
+});
+
+// Animation au défilement
+document.addEventListener('DOMContentLoaded', () => {
+    const elements = document.querySelectorAll('.form-container');
+
+    const options = {
+        threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, options);
+
+    elements.forEach(element => {
+        observer.observe(element);
+    });
+});
+
+#views.py
+from django.shortcuts import render, redirect
+from django.http import HttpResponse
+from django.contrib.auth import login, authenticate, logout
+from django.contrib.auth.models import User
+from commondatab.models import ZzUsers
+from django.contrib import messages
+from django.contrib.auth.hashers import make_password
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, get_object_or_404
+import json
+from django.core.exceptions import ValidationError
+from datetime import datetime
+from django.urls import reverse
+from django.views.generic import TemplateView
+from django.views import View
+
+
+"""from django.core.mail import send_mail
+from django.conf import settings
+from django.template.loader import render_to_string
+from django.contrib.sites.shortcuts import get_current_site
+from django.utils.http import urlsafe_base64_encode
+from django.utils.encoding import force_bytes
+from django.contrib.auth.tokens import default_token_generator
+
+import os
+from dotenv import load_dotenv
+
+load_dotenv()"""
+
+
+
+def Index(request):
+    return render(request, "Utilisateurs/index.html")
+
+
+# la fonction pour la page inscriptiondef Inscription(request):
+def Inscription(request):
+    if request.method == 'POST':
+        pseudo = request.POST.get('pseudo', '')
+        email = request.POST.get('email', '')
+        password1 = request.POST.get('password', '')
+        sexe = request.POST.get('sexe', '')
+        birthday_str = request.POST.get('birthday', None)
+
+        if birthday_str:
+            try:
+                birthday = datetime.strptime(birthday_str, '%Y-%m-%d').date()
+            except ValueError:
+                birthday = None
+        else:
+            birthday = None
+        profile_media = request.FILES.get('profile_media')
+
+        if not pseudo:
+            messages.error(request, 'Le pseudo est requis')
+            return render(request, 'Utilisateurs/inscription.html')
+
+        if ZzUsers.objects.filter(email=email).exists():
+            messages.error(request, "Cet email existe déjà")
+            return render(request, 'Utilisateurs/inscription.html')
+
+        user = ZzUsers.objects.create(
+            email=email,
+            pseudo=pseudo,
+            password=make_password(password1),
+            sex=sexe,
+            birthday=birthday,
+            profile_media=profile_media,
+        )
+        user.save()
+
+        # Authentifier et connecter automatiquement l'utilisateur
+        authenticated_user = authenticate(request, email=email, password=password1)
+        if authenticated_user is not None:
+            login(request, authenticated_user)
+            # Définir la variable de session
+            request.session['new_user'] = True
+            return redirect(reverse('Utilisateurs:profil', kwargs={'id': user.id}))
+
+    return render(request, 'Utilisateurs/inscription.html')
+
+
+#fonction de connexion
+def Connexion(request):
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        
+        user = authenticate(request, username=email, password=password)
+        
+        if user is not None:
+            login(request, user)
+            return redirect('acceuil') 
+        else:
+            messages.error(request, 'Identifiants invalides. Veuillez réessayer.')
+            return render(request, 'Utilisateurs/connexion.html')
+    
+    return render(request, 'Utilisateurs/connexion.html')
+
+
+#fonction de la page profil
+@login_required
+def profil(request, id):
+    user = get_object_or_404(ZzUsers, pk=id)
+    new_user = request.session.pop('new_user', False)
+    context = {'user': user, 'new_user': new_user}
+    return render(request, 'Utilisateurs/profil.html', context)
+
+#fonction de deconnection
+@login_required
+def Logout(request):
+    logout(request)
+    return redirect('Utilisateurs:connexion')
+
+
+#la fonction pour supprimer son compte
+@login_required
+def delete_account(request):
+    if request.method == 'POST':
+        user = request.user
+        user.delete()
+        messages.success(request, 'Votre compte a été supprimé avec succès.')
+        logout(request)
+        return redirect('Utilisateurs:index') 
+
+
+# la fonction pour la mise à jour du profil utilisateurs
+@login_required
+def update_account(request):
+    if request.method == 'POST':
+        user = request.user
+
+        # Récupérer les données du formulaire avec des valeurs par défaut
+        email = request.POST.get('email', 'aucun')
+        pseudo = request.POST.get('pseudo', 'aucun')
+        nom = request.POST.get('nom', 'aucun')
+        prenom = request.POST.get('prenom', 'aucun')
+        password = request.POST.get('password', 'aucun')  # Corrected typo
+        birthday_str = request.POST.get('birthday', None)
+
+        if birthday_str:
+            try:
+                birthday = datetime.strptime(birthday_str, '%Y-%m-%d').date()
+            except ValueError:
+                birthday = None
+        else:
+            birthday = None
+
+        bio = request.POST.get('bio', 'aucun')
+        sex = request.POST.get('sex', 'aucun')
+        plage = request.POST.get('plage', 'aucun')
+        astre = request.POST.get('astre', 'aucun')
+        religion = request.POST.get('religion', 'aucun')
+        city = request.POST.get('city', 'aucun')
+        country = request.POST.get('country', 'aucun')
+        # hobby = request.POST.get('hobby', '[]')  
+        # pref = request.POST.get('pref', '[]')  # JSON string
+
+        # Mise à jour des champs de l'utilisateur
+        user.email = email
+        user.pseudo = pseudo
+        user.nom = nom
+        user.prenom = prenom
+        user.password = password
+        user.birthday = birthday
+        user.bio = bio
+        user.sex = sex
+        user.plage = plage
+        user.astre = astre
+        user.religion = religion
+        user.city = city
+        user.country = country
+        # user.hobby = json.loads(hobby)  # Convertir JSON string en Python list
+        # user.pref = json.loads(pref)  # Convertir JSON string en Python list
+        user.save()
+
+        messages.success(request, 'Votre compte a été mis à jour avec succès.')
+        return redirect('Utilisateurs:profil', id=user.id)
+    else:
+        return render(request, 'Utilisateurs/update_account.html', {'user': request.user})
+
+
+
+
+
+def welcome_view(request):
+    print("La vue de bienvenue a été appelée")  # Message de debug
+    return render(request, 'welcome.html', context={'message': 'Bienvenue!'})
+
+
+class ProfileView(View):
+    def get(self, request):
+        # Logique pour gérer la requête GET
+        return render(request, 'profile.html')
+
+
+S'il te plaît, aide moi. Quand je démarre le serveur, le bouton suivant reste inactif, je veux que tu fasse de telle sorte qu'il soit fonctionnel.Merci!!!
