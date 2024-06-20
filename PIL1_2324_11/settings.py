@@ -57,8 +57,8 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'PIL1_2324_11.urls'
 AUTH_USER_MODEL = 'commondatab.ZzUsers'
-LOGIN_URL = '/login/'
-LOGIN_REDIRECT_URL = '/profil/'
+LOGIN_URL = '/connexion/'
+LOGIN_REDIRECT_URL = '/'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',

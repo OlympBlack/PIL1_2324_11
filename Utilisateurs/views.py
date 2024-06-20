@@ -11,6 +11,10 @@ import json
 from django.core.exceptions import ValidationError
 from datetime import datetime
 from django.urls import reverse
+from django.views.generic import TemplateView
+from django.views import View
+
+
 """from django.core.mail import send_mail
 from django.conf import settings
 from django.template.loader import render_to_string
@@ -24,11 +28,13 @@ from dotenv import load_dotenv
 
 load_dotenv()"""
 
+
+
 def Index(request):
     return render(request, "Utilisateurs/index.html")
 
 
-# la fonction pour la page inscription
+# la fonction pour la page inscriptiondef Inscription(request):
 def Inscription(request):
     if request.method == 'POST':
         pseudo = request.POST.get('pseudo', '')
@@ -37,17 +43,14 @@ def Inscription(request):
         sexe = request.POST.get('sexe', '')
         profile_media = request.FILES.get('profile_media')
 
-        # Vérifier si le pseudo est présent
         if not pseudo:
             messages.error(request, 'Le pseudo est requis')
             return render(request, 'Utilisateurs/inscription.html')
 
-        # Vérifier si l'email existe déjà
         if ZzUsers.objects.filter(email=email).exists():
             messages.error(request, "Cet email existe déjà")
             return render(request, 'Utilisateurs/inscription.html')
 
-        # Créer l'utilisateur
         user = ZzUsers.objects.create(
             email=email,
             pseudo=pseudo,
@@ -56,12 +59,16 @@ def Inscription(request):
             profile_media=profile_media,
         )
         user.save()
-        
-        # Rediriger vers la page d'accueil après l'inscription
-        return redirect(reverse('Utilisateurs:profil', kwargs={'id': user.id}))
 
-    # Afficher le formulaire d'inscription
-    return render(request, 'Utilisateurs/inscription.html') 
+        # Authentifier et connecter automatiquement l'utilisateur
+        authenticated_user = authenticate(request, email=email, password=password1)
+        if authenticated_user is not None:
+            login(request, authenticated_user)
+            # Définir la variable de session
+            request.session['new_user'] = True
+            return redirect(reverse('Utilisateurs:profil', kwargs={'id': user.id}))
+
+    return render(request, 'Utilisateurs/inscription.html')
 
 
 #fonction de connexion
@@ -85,10 +92,10 @@ def Connexion(request):
 #fonction de la page profil
 @login_required
 def profil(request, id):
-    user = get_object_or_404(ZzUsers, id=id)
-    context = {'user': user}
+    user = get_object_or_404(ZzUsers, pk=id)
+    new_user = request.session.pop('new_user', False)
+    context = {'user': user, 'new_user': new_user}
     return render(request, 'Utilisateurs/profil.html', context)
-
 
 #fonction de deconnection
 @login_required
@@ -162,3 +169,17 @@ def update_account(request):
         return redirect('Utilisateurs:profil', id=user.id)
     else:
         return render(request, 'Utilisateurs/update_account.html', {'user': request.user})
+
+
+
+
+
+def welcome_view(request):
+    print("La vue de bienvenue a été appelée")  # Message de debug
+    return render(request, 'welcome.html', context={'message': 'Bienvenue!'})
+
+
+class ProfileView(View):
+    def get(self, request):
+        # Logique pour gérer la requête GET
+        return render(request, 'profile.html')

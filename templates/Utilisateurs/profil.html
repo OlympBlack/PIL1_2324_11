@@ -5,13 +5,14 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Réglages | Soulquest</title>
+  <title>Profil</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
   <!-- Vendor CSS Files -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
   <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.0.9/css/boxicons.min.css" rel="stylesheet">
@@ -31,17 +32,16 @@
   <a href="{% url 'acceuil' %}" class="back-button" style="display: inline-block; color: rgb(253, 56, 214); font-size: 24px; text-decoration: none; margin-bottom: 20px;">
     <i class="bi bi-arrow-left" style="font-size: 48px;color: black;margin-left: 80px;"></i>
 </a>
-  <!--<a href="#" class="toggle-sidebar-button bx bx-menu" onclick="toggleSidebar()"></a>-->
-    
+
   <div class="container">
     <div class="row">
       <div id="sidebar" class="col-md-4 mt-2 sidebar animate__animated animate__fadeInLeft animate__slow" data-aos="fade-right">
         <div class="profile-section scrollable-content">
-                      {% if user.profile_media %}
-                            <img src="{{ user.profile_media.url }}" alt="" width="100%">
-                        {% else %}
-                            <img src="{% static 'image/avatard.avif' %}" alt="" width="100%">
-                      {% endif %}
+          {% if user.profile_media %}
+                <img src="{{ user.profile_media.url }}" alt="" width="100%">
+          {% else %}
+                <img src="{% static 'image/avatard.avif' %}" alt="" width="100%">
+          {% endif %}
           <h2 class=""><strong>{{user.pseudo}}</strong></h2>
         </div>
         {% if messages %}
@@ -119,84 +119,112 @@
               Mettre à jour<i class="bi bi-pencil"></i> 
             </button>        
           </form><hr>
+          <input type="text" name="" id="" value="Action" class="bg-white text-danger form-control text-center">
+
+          <div class="mt-2 ml-3">
         
-    
-              <input type="text" name="" id="" value="Action" class="bg-white text-danger form-control text-center">
-    
-              <div class="mt-2 ml-3">
-            
-                  <a href="{% url 'Utilisateurs:logout' %}"><button type="submit" class="btn btn-success">Déconnecter</button></a>
-            
-                <!-- Bouton pour déclencher le modal -->
-                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteAccountModal">
-                  Supprimer mon compte
-                </button>
-              </div>
-            </div>
-    
-            <a href="{% url 'Utilisateurs:index' %}">
-              <h5 class="text-center mt-4" style="text-decoration: underline;">SoulQuest - 2024</h5>
-            </a>
-          </div>
-          <div id="profile-card-container" class="col-md-8">
-            <div id="profile-card" class="profile-card mx-auto animate__animated animate__fadeInRight animate__slow" data-aos="fade-left">
-                        {% if user.profile_media %}
-                            <img src="{{ user.profile_media.url }}" alt="" width="100%">
-                        {% else %}
-                            <img src="{% static 'image/avatard.avif' %}" alt="" width="100%">
-                        {% endif %}
-              <h2><strong>{{user.pseudo}}</strong></h2>
-    
-              <button class="btn" onmouseover="pauseAnimation(this)" onmouseout="resumeAnimation(this)">Modifier vos informations</button>
-            </div>
+              <a href="{% url 'Utilisateurs:logout' %}"><button type="submit" class="btn btn-success">Déconnecter</button></a>
+        
+            <!-- Bouton pour déclencher le modal -->
+            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteAccountModal">
+              Supprimer mon compte
+            </button>
           </div>
         </div>
+
+        <a href="{% url 'Utilisateurs:index' %}">
+          <h5 class="text-center mt-4" style="text-decoration: underline;">SoulQuest - 2024</h5>
+        </a>
       </div>
-    
-      <!-- Modal de confirmation de suppression de compte -->
-      <div class="modal fade" id="deleteAccountModal" tabindex="-1" aria-labelledby="deleteAccountModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="deleteAccountModalLabel">Confirmation de suppression de compte</h5>
+      <div id="profile-card-container" class="col-md-8">
+        <div id="profile-card" class="profile-card mx-auto animate__animated animate__fadeInRight animate__slow" data-aos="fade-left">
+                    {% if user.profile_media %}
+                        <img src="{{ user.profile_media.url }}" alt="" width="100%">
+                    {% else %}
+                        <img src="{% static 'image/avatard.avif' %}" alt="" width="100%">
+                    {% endif %}
+          <h2><strong>{{user.pseudo}}</strong></h2>
+
+          <button class="btn" onmouseover="pauseAnimation(this)" onmouseout="resumeAnimation(this)">Modifier vos informations</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- Modal de bienvenue -->
+<div class="modal fade" id="welcomeModal" tabindex="-1" aria-labelledby="welcomeModalLabel" aria-hidden="true" style="font-family: 'Roboto', sans-serif;">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="welcomeModalLabel"></h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              Êtes-vous sûr de vouloir supprimer votre compte ?
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-              <form action="{% url 'Utilisateurs:delete_account' %}" method="post">
-                {% csrf_token %}
-                <button type="submit" class="btn btn-danger">Supprimer</button>
-              </form>
-            </div>
           </div>
-        </div>
+          <div class="modal-body text-center">
+              <h2 class="mb-4">Bienvenue sur SoulQuest !</h2>
+              <p>Pour une meilleure suggestion, veuillez compléter votre profil. Voulez-vous compléter maintenant ?</p>
+              <div class="d-flex justify-content-center mt-4">
+                  <a href="{% url 'Utilisateurs:profil' user.id %}">
+                      <button type="button" class="btn btn-primary mx-2" id="completeProfileBtn">Oui</button>
+                  </a>
+                  <a href="{% url 'acceuil' %}">
+                      <button type="button" class="btn btn-danger mx-2" id="visitFriendsBtn">Non</button>
+                  </a>
+              </div>
+          </div>
       </div>
-    
-      <!-- Bibliothèques JavaScript tierces -->
-      <script src="{% static 'js/aos.js' %}"></script>
-      <script src="{% static 'js/glightbox.min.js' %}"></script>
-      <script src="{% static 'js/swiper-bundle.min.js' %}"></script>
-    
-      <!-- Bootstrap JavaScript -->
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-      <script src="{% static 'js/bootstrap.bundle.js' %}"></script>
-      <script src="{% static 'js/bootstrap.min.js' %}"></script>
-      <script src="{% static 'js/bootstrap.js' %}"></script>
-    
-      <!-- Scripts personnalisés -->
-      <script src="{% static 'js/main.js' %}"></script>
-      <script src="{% static 'js/main2.js' %}"></script>
+  </div>
+</div>
 
-     <script>
-      document.addEventListener('DOMContentLoaded', function() {
-    var sidebar = document.getElementById('sidebar');
-    sidebar.style.overflowY = 'hidden';
-});
 
-     </script>
-    </body>
-    </html>
-    
+<!-- Modal de confirmation de suppression de compte -->
+<div class="modal fade" id="deleteAccountModal" tabindex="-1" aria-labelledby="deleteAccountModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <img src="{% static 'image/supprimer.jfif' %}" alt="Supprimer" class="img-fluid d-block mx-auto" style="max-width: 80px;">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-center">
+        <strong>Êtes-vous sûr de vouloir supprimer votre compte ?</strong>
+      </div>
+      <div class="modal-footer justify-content-center">
+        <button type="button" class="btn btn-secondary mx-2" data-bs-dismiss="modal">Annuler</button>
+        <form action="{% url 'Utilisateurs:delete_account' %}" method="post" class="d-inline">
+          {% csrf_token %}
+          <button type="submit" class="btn btn-danger mx-2">Supprimer</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Bibliothèques JavaScript tierces -->
+<script src="{% static 'js/aos.js' %}"></script>
+<script src="{% static 'js/glightbox.min.js' %}"></script>
+<script src="{% static 'js/swiper-bundle.min.js' %}"></script>
+
+<!-- Bootstrap JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="{% static 'js/bootstrap.bundle.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.js' %}"></script>
+
+<!-- Scripts personnalisés -->
+<script src="{% static 'js/main.js' %}"></script>
+<script src="{% static 'js/main2.js' %}"></script>
+
+<!-- Script pour afficher le modal de bienvenue -->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    {% if new_user %}
+    var welcomeModal = new bootstrap.Modal(document.getElementById('welcomeModal'));
+    welcomeModal.show();
+    {% endif %}
+  });
+
+  
+</script>
+
+</body>
+</html>
