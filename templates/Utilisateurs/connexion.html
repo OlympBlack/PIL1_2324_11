@@ -1,34 +1,33 @@
 {% extends 'main _compte.html' %}
 
 {% block content %}
-
-
-<body>
-<div class="login-form">
-    <form action="#" method="post">
-        {% csrf_token %}
-        <h2 class="text-center">Connexion</h2>   
-        <div class="text-center">
-            {% for message in messages %}
-                <div class="text-danger">{{ message }}</div>
-            {% endfor %}
-        </div>    
-        <div class="form-group">
-            <label for="email">Email</label>
-            <input type="text" name="email" id="email" class="form-control" placeholder="Username" required>
-        </div>
-        <div class="form-group">
-            <label for="mdp">Mot de passe</label>
-            <input type="password" name="password" id="mdp" class="form-control" placeholder="Password" required>
-        </div><br>
-        <div class="clearfix">
-            <label class="form-check-label"><input type="checkbox"> Remember me</label>
-            <a href="#" class="text-decoration-none" style="color: #4a2173;">Forgot Password?</a>
-        </div>  
-        <div class="form-group">
-            <button type="submit" class="btn mt-3">Connecter</button>
-        </div>
-    </form><br>
-    <p class="text-center"><a href="{% url 'Utilisateurs:inscription' %}" style="color: #4a2173;">Créer un compte</a></p>
-
-    {% endblock content %}
+<div class="container">
+    <div class="form-container">
+        <form action="#" method="post" class="form">
+            {% csrf_token %}
+            <h2>Connexion</h2>
+            <div class="alert">
+                {% for message in messages %}
+                    <div class="text-danger">{{ message }}</div>
+                {% endfor %}
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="text" name="email" id="email" class="form-control" placeholder="Entrez votre email..." required>
+            </div>
+            <div class="form-group">
+                <label for="mdp">Mot de passe</label>
+                <input type="password" name="password" id="mdp" class="form-control" placeholder="Entrez votre mot de passe..." required>
+            </div>
+            <div class="clearfix">
+                <label class="form-check-label"><input type="checkbox"> Se souvenir de moi</label>
+                <a href="#" class="link">Mot de passe oublié ?</a>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn">Se connecter</button>
+            </div>
+        </form>
+        <p class="text-center"><a href="{% url 'Utilisateurs:inscription' %}" class="link">Créer un compte</a></p>
+    </div>
+</div>
+{% endblock content %}
