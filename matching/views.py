@@ -8,8 +8,13 @@ from commondatab.models import ZzUsersDiscussions
 from commondatab.models import ZzUsers
 
 from datetime import datetime
+from django.contrib.auth.decorators import login_required
 
-# Create your views here.
+#@login_required
+"""def acceuil(request):
+    zzuser = request.user
+    context = {'zzuser': zzuser}
+    return render(request, 'acceuil/index.html', context)"""
 
 def acceuil(request, *args, **kargs):
     request.session["user"] = 1

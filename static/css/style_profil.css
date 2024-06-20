@@ -29,16 +29,24 @@ body {
   }
 
   #sidebar {
-   /* background: linear-gradient(to right, rgb(129, 63, 222), rgb(253, 56, 214));
-    color: white;*/
     padding: 20px;
     min-height: 100vh;
     border-radius: 0 20px 20px 0;
-    overflow-y: auto; 
-    max-height: 100vh; 
-    box-shadow: 8px 8px 82px  hsl(334, 98%, 77%);
+    box-shadow: 8px 8px 82px hsl(334, 98%, 77%);
+}
 
-  }
+.scrollable-content {
+    overflow-y: auto;
+    max-height: 100vh;
+    scrollbar-width: none; 
+    -ms-overflow-style: none; 
+}
+
+.scrollable-content::-webkit-scrollbar {
+    display: none;
+}
+
+
 
   .profile-section {
     text-align: center;
