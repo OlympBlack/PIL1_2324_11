@@ -41,6 +41,15 @@ def Inscription(request):
         email = request.POST.get('email', '')
         password1 = request.POST.get('password', '')
         sexe = request.POST.get('sexe', '')
+        birthday_str = request.POST.get('birthday', None)
+
+        if birthday_str:
+            try:
+                birthday = datetime.strptime(birthday_str, '%Y-%m-%d').date()
+            except ValueError:
+                birthday = None
+        else:
+            birthday = None
         profile_media = request.FILES.get('profile_media')
 
         if not pseudo:
@@ -56,6 +65,7 @@ def Inscription(request):
             pseudo=pseudo,
             password=make_password(password1),
             sex=sexe,
+            birthday=birthday,
             profile_media=profile_media,
         )
         user.save()

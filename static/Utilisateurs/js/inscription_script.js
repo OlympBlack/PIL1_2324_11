@@ -1,9 +1,11 @@
-document.getElementById('nextBtn').addEventListener('click', function() {
+/*document.getElementById('nextBtn').addEventListener('click', function() {
     var email = document.getElementById('email').value;
-    var username = document.getElementById('username').value;
-    var password = document.getElementById('password').value;
+    var pseudo = document.getElementById('pseudo').value;
+    var password1 = document.getElementById('password1').value;
+    var password2 = document.getElementById('password2').value;
+
     
-    if (email && username && password) {
+    if (email && pseudo && password1 && password2) {
         document.getElementById('initial-fields').classList.add('hidden');
         document.getElementById('additional-fields').classList.remove('hidden');
     } else {

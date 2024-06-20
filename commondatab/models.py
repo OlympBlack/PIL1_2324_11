@@ -35,7 +35,7 @@ class ZzUsers(AbstractBaseUser, PermissionsMixin):
     last_login = models.DateTimeField(auto_now_add=True)
     nom = models.CharField(max_length=255, blank=True, null=True)
     prenom = models.CharField(max_length=255, blank=True, null=True)
-    birthday = models.DateField(null=True, blank=True)
+    birthday = models.DateField(null=False, blank=True)
     bio = models.TextField(blank=True, null=True)
     sex = models.CharField(max_length=22, blank=True, null=True)
     """plage = models.CharField(max_length=2, blank=True, null=True)
