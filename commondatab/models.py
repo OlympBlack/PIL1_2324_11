@@ -38,8 +38,8 @@ class ZzUsers(AbstractBaseUser, PermissionsMixin):
     birthday = models.DateField(null=True, blank=True)
     bio = models.TextField(blank=True, null=True)
     sex = models.CharField(max_length=22, blank=True, null=True)
-    plage = models.CharField(max_length=2, blank=True, null=True)
-    astre = models.CharField(max_length=10, blank=True, null=True)
+    """plage = models.CharField(max_length=2, blank=True, null=True)
+    astre = models.CharField(max_length=10, blank=True, null=True)"""
     religion = models.CharField(max_length=10, blank=True, null=True)
     longitude = models.FloatField(default=6.321)
     latitude = models.FloatField(default=2.981)
