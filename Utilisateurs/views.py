@@ -188,3 +188,9 @@ class ProfileView(View):
     def get(self, request):
         # Logique pour gérer la requête GET
         return render(request, 'profile.html')
+    
+# afficher le profil des autres utilisateurs
+def orther_profil(request, id):
+    orther_user = ZzUsers.objects.get(pk=id)
+    context = {'orther_user': orther_user}
+    return render(request, 'Utilisateurs/autre_profil.html', context)
