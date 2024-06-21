@@ -91,6 +91,7 @@ def Inscription(request):
         if authenticated_user is not None:
             login(request, authenticated_user)
             request.session['new_user'] = True
+            request.session["user"] = user.id
             return redirect(reverse('Utilisateurs:profil', kwargs={'id': user.id}))
 
     return render(request, 'Utilisateurs/inscription.html')
@@ -99,10 +100,16 @@ def Connexion(request):
         email = request.POST.get('email')
         password = request.POST.get('password')
 
+
         user = authenticate(request, username=email, password=password)
 
+
+        
+        user = authenticate(request, email=email, password=password)
+        
         if user is not None:
             login(request, user)
+            request.session['user'] = user.id
             return redirect('acceuil') 
         else:
             messages.error(request, 'Identifiants invalides. Veuillez réessayer.')

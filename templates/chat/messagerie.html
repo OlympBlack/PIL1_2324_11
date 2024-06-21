@@ -31,137 +31,30 @@
                 <div class="scrollbox-inner">
                     <div class="recent-updates">
                         <div class="updates-container">
-                            <div class="update">
-                                <div class="profile-image">
-                                    <img src="{% static 'image/profile.jpg' %}" alt="" width="100%">
+                            {% for items in user_Message %}
+                                <div class="update">
+                                    <a href="/profil/show/{{items.3}}">
+                                        <div class="profile-image">
+                                        <img src="" alt="" width="100%">
+                                        </div>
+                                    </a>
+            
+                                    <a href="/chat/disc/{{items.1.id}}">
+                                        <div class="message">
+                                        <p><strong>{{items.1.pseudo|slice:":15"|truncatechars:15 }}</strong>
+                                            <small>{{items.2|slice:":50"|truncatechars:50 }}</small>
+                                        </p>
+                                        {% if items.1.online %}
+                                            <small>En ligne</small>
+                                        {% endif %}
+                                        </div>
+                                    </a>
                                 </div>
+                            {% empty %}
+                                
+                            {% endfor %}
         
-                                <div class="message">
-                                    <p><strong>Arthur</strong>Lorem ipsum dolor 
-                                        sit amet consectetur.
-                                    </p>
-                                </div>
-                            </div>
-        
-                            <div class="update">
-                                <div class="profile-image">
-                                    <img src="{% static 'image/profile.jpg' %}" alt="" width="100%">
-                                </div>
-        
-                                <div class="message">
-                                    <p><strong>Arthur</strong>Lorem ipsum dolor 
-                                        sit amet consectetur.
-                                    </p>
-                                </div>
-                            </div>
-        
-                            <div class="update">
-                                <div class="profile-image">
-                                    <img src="{% static 'image/profile.jpg' %}" alt="" width="100%">
-                                </div>
-        
-                                <div class="message">
-                                    <p><strong>Arthur</strong>Lorem ipsum dolor 
-                                        sit amet consectetur.
-                                    </p>
-                                </div>
-                            </div>
-    
-                            <div class="update">
-                                <div class="profile-image">
-                                    <img src="{% static 'image/profile.jpg' %}" alt="" width="100%">
-                                </div>
-        
-                                <div class="message">
-                                    <p><strong>Arthur</strong>Lorem ipsum dolor 
-                                        sit amet consectetur.
-                                    </p>
-                                </div>
-                            </div>
-    
-                            <div class="update">
-                                <div class="profile-image">
-                                    <img src="{% static 'image/profile.jpg' %}" alt="" width="100%">
-                                </div>
-        
-                                <div class="message">
-                                    <p><strong>Arthur</strong>Lorem ipsum dolor 
-                                        sit amet consectetur.
-                                    </p>
-                                </div>
-                            </div>
-    
-                            <div class="update">
-                                <div class="profile-image">
-                                    <img src="{% static 'image/profile.jpg' %}" alt="" width="100%">
-                                </div>
-        
-                                <div class="message">
-                                    <p><strong>Arthur</strong>Lorem ipsum dolor 
-                                        sit amet consectetur.
-                                    </p>
-                                </div>
-                            </div>
-    
-                            <div class="update">
-                                <div class="profile-image">
-                                    <img src="{% static 'image/profile.jpg' %}" alt="" width="100%">
-                                </div>
-        
-                                <div class="message">
-                                    <p><strong>Arthur</strong>Lorem ipsum dolor 
-                                        sit amet consectetur.
-                                    </p>
-                                </div>
-                            </div>
-    
-                            <div class="update">
-                                <div class="profile-image">
-                                    <img src="{% static 'image/profile.jpg' %}" alt="" width="100%">
-                                </div>
-        
-                                <div class="message">
-                                    <p><strong>Arthur</strong>Lorem ipsum dolor 
-                                        sit amet consectetur.
-                                    </p>
-                                </div>
-                            </div>
-    
-                            <div class="update">
-                                <div class="profile-image">
-                                    <img src="{% static 'image/profile.jpg' %}" alt="" width="100%">
-                                </div>
-        
-                                <div class="message">
-                                    <p><strong>Arthur</strong>Lorem ipsum dolor 
-                                        sit amet consectetur.
-                                    </p>
-                                </div>
-                            </div>
-    
-                            <div class="update">
-                                <div class="profile-image">
-                                    <img src="{% static 'image/profile.jpg' %}" alt="" width="100%">
-                                </div>
-        
-                                <div class="message">
-                                    <p><strong>Arthur</strong>Lorem ipsum dolor 
-                                        sit amet consectetur.
-                                    </p>
-                                </div>
-                            </div>
-    
-                            <div class="update">
-                                <div class="profile-image">
-                                    <img src="{% static 'image/profile.jpg' %}" alt="" width="100%">
-                                </div>
-        
-                                <div class="message">
-                                    <p><strong>Arthur</strong>Lorem ipsum dolor 
-                                        sit amet consectetur.
-                                    </p>
-                                </div>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -183,8 +76,10 @@
                 </div>
 
                 <div class="chat-user">
-                    <p>Lorem Satuner</p>
+                    <p>{{actif.pseudo|slice:":15"|truncatechars:15 }}</p>
+                    {% if actif.online %}
                     <small>En ligne</small>
+                    {% endif %}
                 </div>
 
                 <div class="chat-call">
@@ -193,41 +88,16 @@
                 </div>
             </div>
 
-            <div class="scrollbox">
-                <div class="scrollbox-inner">
-                    <div class="small-talk">
-                        <div class="talk left">
-                            <div class="talk-img">
-                                <img src="{% static 'image/profile.jpg' %}" alt="" width="100%">
-                            </div>
-                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus, provident?</p>
-                        </div>
-            
-                        <div class="talk right">
-                            <div class="talk-img">
-                                <img src="{% static 'image/profile.jpg' %}" alt="" width="100%">
-                            </div>
-                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus, provident?</p>
-                        </div>
-            
-                        <div class="talk left">
-                            <div class="talk-img">
-                                <img src="{% static 'image/profile.jpg' %}" alt="" width="100%">
-                            </div>
-                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus, provident?</p>
-                        </div>
-            
-                        <div class="talk right">
-                            <div class="talk-img">
-                                <img src="{% static 'image/profile.jpg' %}" alt="" width="100%">
-                            </div>
-                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus, provident?</p>
-                        </div>
-                    </div>
-                </div>
+            <!-- <div class="scrollbox">
+                <div class="scrollbox-inner"> -->
+
+                 <!--    </div>
+                </div> -->
+
             </div>
 
-                <form action="" class="chat-footer">
+                <form id="chat-form" class="chat-footer">
+                    {% csrf_token %}
                     <div class="container-chat">
         
                         <div class="chat-file-logo">
@@ -235,102 +105,18 @@
                         </div>
         
                         <div class="chat-group">
-                            <textarea name="" id="" placeholder="Entrez votre message" minlength="1"></textarea>
+                            <textarea name="message" id="message" placeholder="Entrez votre message" minlength="1" autofocus></textarea>
                             <span class="bi-camera-fill"></span>
                         </div>
-        
-                        <button class="chat-submit" type="submit">
+                        <input type="number" hidden="hidden" value="{{ disc }}" id="disc" >
+                        <button id="chatSubmit" class="chat-submit" type="submit">
                             <span class="bi-send"></span>
                         </button>
-        
+                        
                     </div>
                 </form>
 
         </div>
-
-<!--             <div class="scrollbox">
-                <div class="scrollbox-inner">
-                    <div class="insights">
-                        <div class="card">
-                            <div class="card-container">
-                                <div class="card-header">
-                                    <img src="./images/profile.JPG" alt="" width="100%" height="100%">
-                                </div>
-                                <div class="card-body">
-                                    <div class="card-info">
-                                        <strong class="text-cyan">Athur Lozon</strong>
-                                        <small class="text-fusha">34 ans</small>
-                                    </div>
-                                    <div class="card-progress">
-                                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laborum nam nobis magnam ab, officia dolores sit suscipit saepe dolorem ut in. Ratione iure animi dolores. Repudiandae voluptatum ipsa quia reprehenderit...</p>
-                                    </div>
-                                    <div class="card-footer">
-                                        <div class="like">
-                                            <span class="bi-x icon"></span>
-                                            <span class="bi-heart-fill icon"></span>
-                                        </div>
-
-                                        <small>Abomey</small>
-                                        <small>Capricorne</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-            
-                        <div class="card">
-                            <div class="card-container">
-                                <div class="card-header">
-                                    <img src="./images/profile.JPG" alt="" width="100%" height="100%">
-                                </div>
-                                <div class="card-body">
-                                    <div class="card-info">
-                                        <strong class="text-cyan">Athur Lozon</strong>
-                                        <small class="text-fusha">34 ans</small>
-                                    </div>
-                                    <div class="card-progress">
-                                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laborum nam nobis magnam ab, officia dolores sit suscipit saepe dolorem ut in. Ratione iure animi dolores. Repudiandae voluptatum ipsa quia reprehenderit...</p>
-                                    </div>
-                                    <div class="card-footer">
-                                        <div class="like">
-                                            <span class="bi-x icon"></span>
-                                            <span class="bi-heart-fill icon"></span>
-                                        </div>
-
-                                        <small>Abomey</small>
-                                        <small>Capricorne</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-            
-                        <div class="card">
-                            <div class="card-container">
-                                <div class="card-header">
-                                    <img src="./images/profile.JPG" alt="" width="100%" height="100%">
-                                </div>
-                                <div class="card-body">
-                                    <div class="card-info">
-                                        <strong class="text-cyan">Athur Lonzo</strong>
-                                        <small class="text-fusha">34 ans</small>
-                                    </div>
-                                    <div class="card-progress">
-                                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laborum nam nobis magnam ab, officia dolores sit suscipit saepe dolorem ut in. Ratione iure animi dolores. Repudiandae voluptatum ipsa quia reprehenderit...</p>
-                                    </div>
-                                    <div class="card-footer">
-                                        <div class="like">
-                                            <span class="bi-x icon"></span>
-                                            <span class="bi-heart-fill icon"></span>
-                                        </div>
-
-                                        <small>Abomey</small>
-                                        <small>Capricorne</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
         <h2>Contents</h2>
     </div>
 
@@ -469,7 +255,7 @@
                                         </div>
         
                                         <div class="ville-input">
-                                            <input type="text" placeholder="Entrez une astrologique" name="astrale" id="astrale" autocomplete="off" autofocus>
+                                            <input type="text" placeholder="Entrez une astrologique" name="astrale" id="astrale" autocomplete="off">
                                         </div>
                                     </div>
                                 </div>
@@ -482,5 +268,17 @@
     </div>
 
     <script src="{% static 'js/scriptA.js' %}"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+          // Fonction pour faire défiler la div vers le bas
+          function scrollToBottom() {
+            let messagesDiv = $("#smallTalk");
+            messagesDiv.scrollTop(messagesDiv.prop("scrollHeight"));
+          }
+        
+          // Exemple d'ajout d'un nouveau message
+        });
+        </script>
 </body>
 </html>

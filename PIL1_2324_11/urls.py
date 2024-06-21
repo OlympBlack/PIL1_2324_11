@@ -18,14 +18,18 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
-from matching.views import acceuil
-from chatapp.views import dicussions
+from matching.views import acceuil, saveLike, deleteLike
+from chatapp.views import discussions, send, getMessages
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('Utilisateurs.urls')),
     path('acceuil/', acceuil, name='acceuil'),
-    path('chat/disc', dicussions, name='chat'),
+    path('chat/disc/<int:discID>', discussions, name='chat'),
+    path('send/<int:disc>', send, name='send'),
+    path('getMessages/<int:disc>-<int:lastID>', getMessages, name='getMessages'),
+    path('like/<int:liker>-<int:liked>', saveLike, name='saveLike'),
+    path('delike/<int:liker>-<int:liked>', deleteLike, name='deleteLike'),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

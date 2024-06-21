@@ -31,137 +31,29 @@
                 <div class="scrollbox-inner">
                     <div class="recent-updates">
                         <div class="updates-container">
-                            <div class="update">
-                                <div class="profile-image">
-                                    <img src="{% static 'image/profile.jpg' %}" alt="" width="100%">
+
+                            {% for items in user_Message %}
+                                <div class="update">
+                                    <a href="/profil/show/{{items.3}}">
+                                        <div class="profile-image">
+                                        <img src="" alt="" width="100%">
+                                        </div>
+                                    </a>
+            
+                                    <a href="/chat/disc/{{items.1.id}}">
+                                        <div class="message">
+                                        <p><strong>{{items.1.pseudo|slice:":15"|truncatechars:15 }}</strong>
+                                            <small>{{items.2|slice:":50"|truncatechars:50 }}</small>
+                                        </p>
+                                        {% if items.1.online %}
+                                            <small>En ligne</small>
+                                        {% endif %}
+                                        </div>
+                                    </a>
                                 </div>
-        
-                                <div class="message">
-                                    <p><strong>Arthur</strong>Lorem ipsum dolor 
-                                        sit amet consectetur.
-                                    </p>
-                                </div>
-                            </div>
-        
-                            <div class="update">
-                                <div class="profile-image">
-                                    <img src="{% static 'image/profile.jpg' %}" alt="" width="100%">
-                                </div>
-        
-                                <div class="message">
-                                    <p><strong>Arthur</strong>Lorem ipsum dolor 
-                                        sit amet consectetur.
-                                    </p>
-                                </div>
-                            </div>
-        
-                            <div class="update">
-                                <div class="profile-image">
-                                    <img src="{% static 'image/profile.jpg' %}" alt="" width="100%">
-                                </div>
-        
-                                <div class="message">
-                                    <p><strong>Arthur</strong>Lorem ipsum dolor 
-                                        sit amet consectetur.
-                                    </p>
-                                </div>
-                            </div>
-    
-                            <div class="update">
-                                <div class="profile-image">
-                                    <img src="{% static 'image/profile.jpg' %}" alt="" width="100%">
-                                </div>
-        
-                                <div class="message">
-                                    <p><strong>Arthur</strong>Lorem ipsum dolor 
-                                        sit amet consectetur.
-                                    </p>
-                                </div>
-                            </div>
-    
-                            <div class="update">
-                                <div class="profile-image">
-                                    <img src="{% static 'image/profile.jpg' %}" alt="" width="100%">
-                                </div>
-        
-                                <div class="message">
-                                    <p><strong>Arthur</strong>Lorem ipsum dolor 
-                                        sit amet consectetur.
-                                    </p>
-                                </div>
-                            </div>
-    
-                            <div class="update">
-                                <div class="profile-image">
-                                    <img src="{% static 'image/profile.jpg' %}" alt="" width="100%">
-                                </div>
-        
-                                <div class="message">
-                                    <p><strong>Arthur</strong>Lorem ipsum dolor 
-                                        sit amet consectetur.
-                                    </p>
-                                </div>
-                            </div>
-    
-                            <div class="update">
-                                <div class="profile-image">
-                                    <img src="{% static 'image/profile.jpg' %}" alt="" width="100%">
-                                </div>
-        
-                                <div class="message">
-                                    <p><strong>Arthur</strong>Lorem ipsum dolor 
-                                        sit amet consectetur.
-                                    </p>
-                                </div>
-                            </div>
-    
-                            <div class="update">
-                                <div class="profile-image">
-                                    <img src="{% static 'image/profile.jpg' %}" alt="" width="100%">
-                                </div>
-        
-                                <div class="message">
-                                    <p><strong>Arthur</strong>Lorem ipsum dolor 
-                                        sit amet consectetur.
-                                    </p>
-                                </div>
-                            </div>
-    
-                            <div class="update">
-                                <div class="profile-image">
-                                    <img src="{% static 'image/profile.jpg' %}" alt="" width="100%">
-                                </div>
-        
-                                <div class="message">
-                                    <p><strong>Arthur</strong>Lorem ipsum dolor 
-                                        sit amet consectetur.
-                                    </p>
-                                </div>
-                            </div>
-    
-                            <div class="update">
-                                <div class="profile-image">
-                                    <img src="{% static 'image/profile.jpg' %}" alt="" width="100%">
-                                </div>
-        
-                                <div class="message">
-                                    <p><strong>Arthur</strong>Lorem ipsum dolor 
-                                        sit amet consectetur.
-                                    </p>
-                                </div>
-                            </div>
-    
-                            <div class="update">
-                                <div class="profile-image">
-                                    <img src="{% static 'image/profile.jpg' %}" alt="" width="100%">
-                                </div>
-        
-                                <div class="message">
-                                    <p><strong>Arthur</strong>Lorem ipsum dolor 
-                                        sit amet consectetur.
-                                    </p>
-                                </div>
-                            </div>
+                            {% empty %}
+                                
+                            {% endfor %}
                         </div>
                     </div>
                 </div>
@@ -179,88 +71,44 @@
         <div class="scrollbox">
             <div class="scrollbox-inner">
                 <div class="insights">
+                    {% if messages %}
+                        {% for message in messages %}
+                            <p>{{ message }}</p>
+                        {% endfor %}
+                    {% endif %}
+                    {% for user in All_users %}
                     <div class="card">
                         <div class="card-container">
                             <div class="card-header">
-                                <img src="{% static 'image/profile.jpg' %}" alt="" width="100%" height="100%">
+                                <img src="{{ user.profile_media.url }}" alt="" width="100%" height="100%">
                             </div>
                             <div class="card-body">
                                 <div class="card-info">
-                                    <strong class="text-cyan">Athur Lozon</strong>
-                                    <small class="text-fusha">34 ans</small>
+                                    <strong class="text-cyan">{{ user.pseudo }}</strong>
+                                    <small class="text-fusha">age</small>
                                 </div>
                                 <div class="card-progress">
-                                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laborum nam nobis magnam ab, officia dolores sit suscipit saepe dolorem ut in. Ratione iure animi dolores. Repudiandae voluptatum ipsa quia reprehenderit...</p>
+                                    <p>{{ user.bio }}</p>
                                 </div>
                                 <div class="card-footer">
                                     <div class="like">
-                                        <span class="bi-x icon"></span>
-                                        <span class="bi-heart-fill icon"></span>
+                                        <a href="/delike/{{userID}}-{{user.id}}"><span class="bi-x icon"></span></a>
+                                        <a href="/like/{{userID}}-{{user.id}}"><span class="bi-heart-fill icon"></span></a>
                                     </div>
 
-                                    <small>Abomey</small>
-                                    <small>Capricorne</small>
+                                    <small>{{ user.city }}</small>
+                                    <!-- <small>Capricorne</small> -->
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <div class="card">
-                        <div class="card-container">
-                            <div class="card-header">
-                                <img src="{% static 'image/profile.jpg' %}" alt="" width="100%" height="100%">
-                            </div>
-                            <div class="card-body">
-                                <div class="card-info">
-                                    <strong class="text-cyan">Athur Lozon</strong>
-                                    <small class="text-fusha">34 ans</small>
-                                </div>
-                                <div class="card-progress">
-                                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laborum nam nobis magnam ab, officia dolores sit suscipit saepe dolorem ut in. Ratione iure animi dolores. Repudiandae voluptatum ipsa quia reprehenderit...</p>
-                                </div>
-                                <div class="card-footer">
-                                    <div class="like">
-                                        <span class="bi-x icon"></span>
-                                        <span class="bi-heart-fill icon"></span>
-                                    </div>
-
-                                    <small>Abomey</small>
-                                    <small>Capricorne</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <div class="card-container">
-                            <div class="card-header">
-                                <img src="{% static 'image/profile.jpg' %}" alt="" width="100%" height="100%">
-                            </div>
-                            <div class="card-body">
-                                <div class="card-info">
-                                    <strong class="text-cyan">Athur Lozon</strong>
-                                    <small class="text-fusha">34 ans</small>
-                                </div>
-                                <div class="card-progress">
-                                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laborum nam nobis magnam ab, officia dolores sit suscipit saepe dolorem ut in. Ratione iure animi dolores. Repudiandae voluptatum ipsa quia reprehenderit...</p>
-                                </div>
-                                <div class="card-footer">
-                                    <div class="like">
-                                        <span class="bi-x icon"></span>
-                                        <span class="bi-heart-fill icon"></span>
-                                    </div>
-
-                                    <small>Abomey</small>
-                                    <small>Capricorne</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>
-
-        <h2>Contents</h2>
+        {% if All_users == null %}
+            <h2>Site en cours de maintenance</h2>
+        {% endif %}
     </div>
 
     <div class="filter">
@@ -286,7 +134,7 @@
             <div class="profile">
                 <div class="profile-info">
                     <p><strong> {{ user.pseudo }} </strong></p>
-                    <small>Admin</small>
+                    <small>En ligne</small>
                 </div>
 
                 <div class="profile-image">
