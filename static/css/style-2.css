@@ -354,7 +354,7 @@ footer h2 {
     flex-direction: column;
     /* justify-content: flex-end; */
     width: 100%;
-    height: 81vh;
+    height: 81%;
     background-color: var(--white);
     border-radius: var(--border-radius-12);
     box-shadow: var(--box-shadow-card);
@@ -414,13 +414,15 @@ footer h2 {
 /***********CHAT SMALL TALK************/
 
 .chat-card .small-talk {
-    width: 90%;
-    height: calc(100% - 150px);
-    margin: 60px auto 90px auto;
+    width: 100%;
+    height: calc(100%);
+    margin-top: 60px;
+    margin-bottom: 90px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    overflow: auto;
+    overflow: scroll;
+    scroll-behavior: smooth;
 }
 
 .small-talk .talk {
@@ -428,7 +430,7 @@ footer h2 {
     display: flex;
     align-items: center;
     font-size: 14px;
-    width: 50%;
+    max-width: 70%;
 }
 
 .talk img {
@@ -436,15 +438,47 @@ footer h2 {
     border-radius: 50%;
 }
 
+.small-talk .chat-mes-hor {
+    display: flex;
+    flex-direction: column;
+    max-width: auto;
+}
+
+.small-talk .chat-date {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    opacity: 0.7;
+}
+
+.right .chat-mes-hor small{
+    margin-left: auto;
+    margin-right: 25px;
+    opacity: 0.7;
+    font-size: 11px;
+}
+
+.left .chat-mes-hor small{
+    margin-right: auto;
+    margin-left: 25px;
+    opacity: 0.7;
+    font-size: 11px;
+}
+
 .talk p{
-    padding-left: 15px;
+    padding-left: 10px;
     line-height: 25px;
     border-radius: 20px;
-    text-align: justify;
+    text-align: left;
+    max-width: auto;
 }
 
 .small-talk .right {
     margin-left: auto;
+    width: 100%;
+    margin-right: 0;
 }
 
 .small-talk .right {
@@ -463,6 +497,7 @@ footer h2 {
     margin-left: 10px;
     background-color: rgb(216, 216, 216);
     color: #000;
+    width: auto;
     padding-right: 10px;
 }
 
@@ -796,6 +831,7 @@ footer h2 {
 
 .profile-image {
     width: 64px;
+    height: 64px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -803,6 +839,18 @@ footer h2 {
     border-radius: var(--border-radius-rounded);
     overflow: hidden;
 }
+
+.profile-imag {
+    width: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 16px;
+    border-radius: var(--border-radius-rounded);
+    overflow: hidden;
+}
+
+
 
 .profile-image-talk {
     width: 25px;
