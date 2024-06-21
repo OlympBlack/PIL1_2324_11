@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Profil de {{ other_user.pseudo }}</title>
+  <title>Profil de {{ orther_user.pseudo }}</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
   <!-- Vendor CSS Files -->
@@ -23,6 +23,12 @@
   <link href="{% static 'css/style.css' %}" rel="stylesheet">
   <link href="{% static 'css/style2.css' %}" rel="stylesheet">
   <link href="{% static 'css/style_profil.css' %}" rel="stylesheet">
+  <style>
+    input{
+        color: black !important;
+        font-style: italic;
+    }
+  </style>
 </head>
 <body>
   <a href="{% url 'acceuil' %}" class="back-button" style="display: inline-block; color: rgb(253, 56, 214); font-size: 24px; text-decoration: none; margin-bottom: 20px;">
@@ -32,62 +38,62 @@
     <div class="row">
       <div id="sidebar" class="col-md-4 mt-2 sidebar animate__animated animate__fadeInLeft animate__slow" data-aos="fade-right">
         <div class="profile-section scrollable-content">
-          {% if other_user.profile_media %}
-            <img src="{{ other_user.profile_media.url }}" alt="" width="100%">
+          {% if orther_user.profile_media %}
+            <img src="{{ orther_user.profile_media.url }}" alt="" width="100%">
           {% else %}
             <img src="{% static 'image/avatard.avif' %}" alt="" width="100%">
           {% endif %}
-          <h2 class=""><strong>{{ other_user.pseudo }}</strong></h2>
+          <h2 class=""><strong>{{ orther_user.pseudo }}</strong></h2>
         </div>
         <div class="menu">
           <!-- Vous pouvez ajouter d'autres informations de profil ici -->
           <div class="mb-3">
             <label for="email" class="form-label">Adresse e-mail</label>
-            <input type="email" id="email" class="form-control" name="email" value="{{ other_user.email }}" disabled>
+            <input type="email" id="email" class="form-control" name="email" value="{{ orther_user.email }}" disabled>
           </div>
           <div class="mb-3">
             <label for="pseudo" class="form-label">Pseudo</label>
-            <input type="text" id="pseudo" class="form-control" name="pseudo" value="{{ other_user.pseudo }}" disabled>
+            <input type="text" id="pseudo" class="form-control" name="pseudo" value="{{ orther_user.pseudo }}" disabled>
           </div>
           <div class="mb-3">
             <label for="nom" class="form-label">Nom</label>
-            <input type="text" id="nom" class="form-control" name="nom" value="{{ other_user.nom }}" disabled>
+            <input type="text" id="nom" class="form-control" name="nom" value="{{ orther_user.nom }}" disabled>
           </div>
           <div class="mb-3">
             <label for="prenom" class="form-label">Prénom</label>
-            <input type="text" id="prenom" class="form-control" name="prenom" value="{{ other_user.prenom }}" disabled>
+            <input type="text" id="prenom" class="form-control" name="prenom" value="{{ orther_user.prenom }}" disabled>
           </div>
           <div class="mb-3">
             <label for="birthday" class="form-label">Date de naissance</label>
-            <input type="date" id="birthday" class="form-control" name="birthday" value="{{ other_user.birthday|date:'Y-m-d' }}" disabled>
+            <input type="date" id="birthday" class="form-control" name="birthday" value="{{ orther_user.birthday|date:'Y-m-d' }}" disabled>
           </div>
           <div class="mb-3">
             <label for="bio" class="form-label">Biographie</label>
-            <textarea id="bio" class="form-control" name="bio" disabled>{{ other_user.bio }}</textarea>
+            <textarea id="bio" class="form-control" name="bio" disabled>{{ orther_user.bio }}</textarea>
           </div>
           <div class="mb-3">
             <label for="sex" class="form-label">Sexe</label>
-            <input type="text" id="sex" class="form-control" name="sex" value="{{ other_user.sex }}" disabled>
+            <input type="text" id="sex" class="form-control" name="sex" value="{{ orther_user.sex }}" disabled>
           </div>
           <div class="mb-3">
             <label for="plage" class="form-label">Plage</label>
-            <input type="text" id="plage" class="form-control" name="plage" value="{{ other_user.plage }}" disabled>
+            <input type="text" id="plage" class="form-control" name="plage" value="{{ orther_user.plage }}" disabled>
           </div>
           <div class="mb-3">
             <label for="astre" class="form-label">Astre</label>
-            <input type="text" id="astre" class="form-control" name="astre" value="{{ other_user.astre }}" disabled>
+            <input type="text" id="astre" class="form-control" name="astre" value="{{ orther_user.astre }}" disabled>
           </div>
           <div class="mb-3">
             <label for="religion" class="form-label">Religion</label>
-            <input type="text" id="religion" class="form-control" name="religion" value="{{ other_user.religion }}" disabled>
+            <input type="text" id="religion" class="form-control" name="religion" value="{{ orther_user.religion }}" disabled>
           </div>
           <div class="mb-3">
             <label for="city" class="form-label">Ville</label>
-            <input type="text" id="city" class="form-control" name="city" value="{{ other_user.city }}" disabled>
+            <input type="text" id="city" class="form-control" name="city" value="{{ orther_user.city }}" disabled>
           </div>
           <div class="mb-3">
             <label for="country" class="form-label">Pays</label>
-            <input type="text" id="country" class="form-control" name="country" value="{{ other_user.country }}" disabled>
+            <input type="text" id="country" class="form-control" name="country" value="{{ orther_user.country }}" disabled>
           </div>
         </div>
 
@@ -97,37 +103,16 @@
       </div>
       <div id="profile-card-container" class="col-md-8">
         <div id="profile-card" class="profile-card mx-auto animate__animated animate__fadeInRight animate__slow" data-aos="fade-left">
-          {% if other_user.profile_media %}
-            <img src="{{ other_user.profile_media.url }}" alt="" width="100%">
+          {% if orther_user.profile_media %}
+            <img src="{{ orther_user.profile_media.url }}" alt="" width="100%">
           {% else %}
             <img src="{% static 'image/avatard.avif' %}" alt="" width="100%">
           {% endif %}
-          <h2><strong>{{ other_user.pseudo }}</strong></h2>
+          <h2><strong>{{ orther_user.pseudo }}</strong></h2>
         </div>
       </div>
     </div>
   </div>
 
-  <div id="profile-card-container" class="col-md-8">
-    <div id="profile-card" class="profile-card mx-auto animate__animated animate__fadeInRight animate__slow" data-aos="fade-left">
-      {% if other_user.profile_media %}
-        <img src="{{ other_user.profile_media.url }}" alt="" width="100%">
-      {% else %}
-        <img src="{% static 'image/avatard.avif' %}" alt="" width="100%">
-      {% endif %}
-      <h2><strong>{{ other_user.pseudo }}</strong></h2>
-    </div>
-  </div>
-</div>
 
-  </div>
-<!-- Modal de bienvenue -->
-<div class="modal fade" id="welcomeModal" tabindex="-1" aria-labelledby="welcomeModalLabel" aria-hidden="true" style="font-family: 'Roboto', sans-serif;">
-  <div class="modal-dialog">
-      <div class="modal-content">
-          <div class="modal-header">
-              <h5 class="modal-title" id="welcomeModalLabel"></h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body text-center">
-              <h2 class="mb-4">Bienvenue sur SoulQuest
+  

@@ -17,7 +17,7 @@ urlpatterns = [
     path('update_account/', views.update_account, name='update_account'),
     path('welcome/', views.welcome_view, name='welcome'),
     path('profile/', ProfileView.as_view(), name='profile'),
-
+    path('orther_profil/<int:id>', views.orther_profil, name='orther_profil'),
     #path('confirmation_envoyee/', views.confirmation_sent, name='confirmation_sent'),
     #path('confirmation/<str:token>/', views.confirm_account, name='confirm_account'),
 ]  
