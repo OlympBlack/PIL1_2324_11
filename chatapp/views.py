@@ -13,8 +13,7 @@ import pytz
 # Soit 1 l'id de l'utilisateur en session
 
 def discussions (request, discID):
-    request.session.get('user')
-    userID = 1
+    userID = request.session.get('user')
     user_Message = []
     discussionsID = []
     if ZzDiscussions.objects.filter(id = discID).exists():
@@ -39,8 +38,8 @@ def discussions (request, discID):
                     3 : Interlo.user_id
                 })
 
-                actif = ZzUsersDiscussions.objects.filter(discussion_id = discID).exclude(user_id = userID).get()
-                userActif = ZzUsers.objects.filter(id = actif.user_id).get()
+    actif = ZzUsersDiscussions.objects.filter(discussion_id = discID).exclude(user_id = userID).get()
+    userActif = ZzUsers.objects.filter(id = actif.user_id).get()
 
 
     return render(request, 'chat/messagerie.html', {"user_Message" : user_Message, "actif" : userActif})

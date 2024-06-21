@@ -831,6 +831,7 @@ footer h2 {
 
 .profile-image {
     width: 64px;
+    height: 64px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -838,6 +839,18 @@ footer h2 {
     border-radius: var(--border-radius-rounded);
     overflow: hidden;
 }
+
+.profile-imag {
+    width: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 16px;
+    border-radius: var(--border-radius-rounded);
+    overflow: hidden;
+}
+
+
 
 .profile-image-talk {
     width: 25px;

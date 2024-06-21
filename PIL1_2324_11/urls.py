@@ -30,9 +30,6 @@ urlpatterns = [
     path('getMessages/<int:disc>-<int:lastID>', getMessages, name='getMessages'),
     path('like/<int:liker>-<int:liked>', saveLike, name='saveLike'),
     path('delike/<int:liker>-<int:liked>', deleteLike, name='deleteLike'),
-
-
-    path('chat/disc', dicussions, name='chat'),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
