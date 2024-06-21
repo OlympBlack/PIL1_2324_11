@@ -44,14 +44,14 @@ def acceuil(request, *args, **kargs):
             user_Message.append({
                 1 : ZzUsers.objects.filter(id = Interlo.user_id).get(),
                 2 : lastMessage,
-                3 : Interlo.user_id
+                3 : Interlo.user_id,
+                4 : renderDisc
             })
 
     if(ZzUsers.objects.all().exists):
         All_users = ZzUsers.objects.exclude(id = userID).all()
     else:
         All_users = []  
-
     return render(request, 'acceuil/index.html', {'user_Message' : user_Message, 'All_users' : All_users, "userID" : userID})
     if request.method == 'GET':
         try:
@@ -135,14 +135,15 @@ def saveLike(request, liker, liked):
                         if(lik.get().lik == 1):
                             discussion = ZzDiscussions.objects.create()
                             discussion.save()
-                            discussion_id = discussion.id
-                            lien1 = ZzUsersDiscussions.objects.create(status = 1, discussion_id = discussion_id, user_id = like2)
+                            disc_id = discussion.id
+                            lien1 = ZzUsersDiscussions.objects.create(status = 1, discussion_id = disc_id, user_id = like2)
                             lien1.save()
-                            lien2 = ZzUsersDiscussions.objects.create(status = 1, discussion_id = discussion_id, user_id = like1)
+                            lien2 = ZzUsersDiscussions.objects.create(status = 1, discussion_id = disc_id, user_id = like1)
                             lien2.save()
-                            message = "Vous pouvez maintenant discuter avec" + like2_user.pseudo
+                            print("Il m'a déjà liké")
+                            message = "Vous pouvez maintenant discuter avec " + like2_user.pseudo
                             messages.success(request, message)
-                            redirection = "/chat/disc/" + discussion_id+"?change="+str(like2)
+                            redirection = "/chat/disc/" + str(disc_id)+"?change="+str(like2)
                             return redirect(redirection)
                         else:
                             message = "Vous pouvez expérer que " + like2_user.pseudo+ " vous accepte"
@@ -150,17 +151,18 @@ def saveLike(request, liker, liked):
                             redirection = "/acceuil/?expect="+str(like2)
                             return redirect(redirection)   
                     else :
+                        print("Il ne m'a pas encore liké")
                         message = "En attente de réponse de " + like2_user.pseudo
                         messages.success(request, message)
                         redirection = "/acceuil/?atempt="+str(like2)
                         return redirect(redirection)
             else:
                 lik = ZzFriendship.objects.filter(liker = like2, liked = like1)
+                myLike = ZzFriendship.objects.create(liker = like1_user, lik = 1, liked = like2_user)
+                myLike.save()
                 if(lik.exists()):
                     if(lik.get().lik == 1):
                         discussion = ZzDiscussions.objects.create()
-                        myLike = ZzFriendship.objects.create(liker = like1_user, lik = 1, liked = like2_user)
-                        myLike.save()
                         discussion.save()
                         discussion_id = discussion.id
                         lien1 = ZzUsersDiscussions.objects.create(status = 1, discussion_id = discussion_id, user_id = like2)
@@ -169,7 +171,7 @@ def saveLike(request, liker, liked):
                         lien2.save()
                         message = "Vous pouvez maintenant discuter avec " + like2_user.pseudo
                         messages.success(request, message)
-                        redirection = "/chat/disc/" + discussion_id+"?accepte="+str(like2)
+                        redirection = "/chat/disc/" + str(discussion_id)+"?accepte="+str(like2)
                         return redirect(redirection)
                     else:
                         message = "Vous pouvez expérer que " + like2_user.pseudo+ " vous accepte"

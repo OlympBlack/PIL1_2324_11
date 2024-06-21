@@ -34,13 +34,13 @@
 
                             {% for items in user_Message %}
                                 <div class="update">
-                                    <a href="/profil/show/{{items.3}}">
+                                    <a href="/orther_profil/{{items.3}}">
                                         <div class="profile-image">
-                                        <img src="" alt="" width="100%">
+                                        <img src="{{ items.1.profile_media.url }}" alt="" width="100%">
                                         </div>
                                     </a>
             
-                                    <a href="/chat/disc/{{items.1.id}}">
+                                    <a href="/chat/disc/{{items.4}}">
                                         <div class="message">
                                         <p><strong>{{items.1.pseudo|slice:":15"|truncatechars:15 }}</strong>
                                             <small>{{items.2|slice:":50"|truncatechars:50 }}</small>

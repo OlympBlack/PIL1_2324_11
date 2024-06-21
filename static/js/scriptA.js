@@ -98,10 +98,10 @@ sendButton.addEventListener("click", async (event) => {
 
     try {
         const dataTosend = {
-            disc : disc,
+            disc : 1,
             message : message
         }
-        const response = await fetch(`/send/${disc}`, {
+        const response = await fetch(`/send/1`, {
             method: "POST",
             body: JSON.stringify(dataTosend),
             headers: {
@@ -120,6 +120,7 @@ sendButton.addEventListener("click", async (event) => {
     } catch (error) {
         console.error("Erreur lors de l'envoi des données :", error)
     }
+
     document.getElementById('message').value = ""
     let small_talk = document.querySelector("#smallTalk")
     small_talk.scrollTop = small_talk.scrollHeight;
@@ -152,10 +153,10 @@ let urlDisc = 0
                 })
    
     }
-/*     setInterval(() => {
+    setInterval(() => {
         console.log(urlDisc)
         getDatas(urlDisc); // Appel de getDatas avec urlDisc comme argument
-    }, 500) */
+    }, 500)
 
 
 
@@ -312,7 +313,7 @@ function scrollToBottom(elementId) {
 
 
 
-async function senderLike(element1, element2){
+/* async function senderLike(element1, element2){
     try {
         const dataTosend = {
             liker : element1,
@@ -363,7 +364,7 @@ likeButtons.forEach(button => {
         // Ajoutez ici le code que vous souhaitez exécuter lors du clic sur un bouton 'like'
     });
 });
-
+ */
 
 
 /* document.getElementById('message').value = ""

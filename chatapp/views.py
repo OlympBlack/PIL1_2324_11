@@ -21,7 +21,7 @@ def discussions (request, discID):
             users = ZzUsersDiscussions.objects.filter(user_id = userID)
             for useri in users:
                 discussionsID.append(useri.discussion_id)
-            print(discussionsID)    
+            print(discussionsID) 
             for renderDisc in discussionsID:
                 discussions = ZzDiscussions.objects
                 message = ZzMessages.objects
@@ -35,9 +35,12 @@ def discussions (request, discID):
                 user_Message.append({
                     1 : ZzUsers.objects.filter(id = Interlo.user_id).get(),
                     2 : lastMessage,
-                    3 : Interlo.user_id
+                    3 : Interlo.user_id,
+                    4 : renderDisc
                 })
 
+    print(discID, userID)
+    print(ZzUsersDiscussions.objects.filter(discussion_id = discID).all())
     actif = ZzUsersDiscussions.objects.filter(discussion_id = discID).exclude(user_id = userID).get()
     userActif = ZzUsers.objects.filter(id = actif.user_id).get()
 
@@ -81,11 +84,14 @@ def getMessages(request, disc, lastID):
         messages = ZzMessages.objects.filter(discussion_id=disc).order_by("created_at")
 
     if messages.exists():
+        receveID = ZzUsersDiscussions.objects.filter(discussion_id=disc).exclude(user_id = user).get().id
+        receve = ZzUsers.objects.filter(id = receveID).get()
+        userSend = ZzUsers.objects.filter(id = user).get()
         data = {
             "messages": list(messages.values()),  # Convertir QuerySet en liste de dictionnaires JSON
             "sender": user,
-            "receiver_img": "http://localhost:8000/static/image/profile.jpg",
-            "sender_img": "http://localhost:8000/static/image/profile.jpg"  
+            "receiver_img": receve.profile_media.url,
+            "sender_img":  userSend.profile_media.url 
         }
         return JsonResponse(data)
     else:
