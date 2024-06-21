@@ -156,11 +156,11 @@ def saveLike(request, liker, liked):
                         return redirect(redirection)
             else:
                 lik = ZzFriendship.objects.filter(liker = like2, liked = like1)
-                myLike = ZzFriendship.objects.create(liker = like1_user, lik = 1, liked = like2_user)
-                myLike.save()
                 if(lik.exists()):
                     if(lik.get().lik == 1):
-                        discussion = ZzDiscussions.objects.create(pk=id)
+                        discussion = ZzDiscussions.objects.create()
+                        myLike = ZzFriendship.objects.create(liker = like1_user, lik = 1, liked = like2_user)
+                        myLike.save()
                         discussion.save()
                         discussion_id = discussion.id
                         lien1 = ZzUsersDiscussions.objects.create(status = 1, discussion_id = discussion_id, user_id = like2)

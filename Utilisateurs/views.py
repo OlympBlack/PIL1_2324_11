@@ -87,7 +87,7 @@ def Inscription(request):
         )
         user.save()
 
-        authenticated_user = authenticate(request, username=email, password=password1)
+        authenticated_user = authenticate(request, email=email, password=password1)
         if authenticated_user is not None:
             login(request, authenticated_user)
             request.session['new_user'] = True
